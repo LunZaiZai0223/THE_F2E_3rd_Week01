@@ -1,0 +1,514 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  // position: relative;
+}
+
+body {
+  li {
+    list-style-type: none;
+  }
+  img {
+    display: block;
+  }
+  button {
+    cursor: pointer;
+  }
+}
+
+@mixin ipad {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+main {
+  // width: 100%;
+  // max-width: 95%;
+  // margin: 0 auto;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 0;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 10;
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1020px;
+  }
+  .logo-wrapper {
+    img {
+      width: 99px;
+      height: 57px;
+      object-fit: contain;
+    }
+  }
+  .cat-group {
+    display: flex;
+
+    li {
+      margin-right: 1rem;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      text-decoration: underline;
+      img {
+        margin-right: 6px;
+      }
+    }
+    li:nth-of-type(1) {
+      color: #FF1D6C;
+      position: relative;
+      transition: color .3s;
+      &:after {
+        content: "";
+        width: 0%;
+        height: 100%;
+        background-color: #FF1D6C;
+        border-radius: 4px;
+        position: absolute;
+        top: 0;
+        left: 16%;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        transition: .3s;
+      }
+      &:hover {
+        color: #fff;
+        &:after {
+          width: 95%;
+        }
+      }
+    }
+    li:nth-of-type(2) {
+      color: #FFB72C;
+      position: relative;
+      transition: color .3s;
+      &:after {
+        content: "";
+        width: 0%;
+        height: 100%;
+        background-color: #FFB72C;
+        border-radius: 4px;
+        position: absolute;
+        top: 0;
+        left: 16%;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        transition: .3s;
+      }
+      &:hover {
+        color: #fff;
+        &:after {
+          width: 95%;
+        }
+      }
+    }
+    li:nth-of-type(3) {
+      color: #007350;
+      position: relative;
+      transition: color .3s;
+      &:after {
+        content: "";
+        width: 0%;
+        height: 100%;
+        background-color: #007350;
+        border-radius: 4px;
+        position: absolute;
+        top: 0;
+        left: 16%;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        transition: .3s;
+      }
+      &:hover {
+        color: #fff;
+        &:after {
+          width: 95%;
+        }
+      }
+    }
+  }
+}
+
+.banner {
+  position: relative;
+  .image-wrapper {
+    height: 380px;
+    padding: 16px;
+    img {
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      filter: brightness(1.2);
+      opacity: 0.9;
+    }
+  }
+  .banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    h1 {
+      font-size: 3.125rem;
+      font-weight: bold;
+      color: #ffff;
+      @include mobile {
+        font-size: 2rem;
+      }
+      .text {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        border: 7px solid #ff1d6c;
+        overflow: hidden;
+        transform: translateY(2px);
+        text-shadow: 4px 4px 4px rgb(13 11 12 / 20%);
+        @include mobile {
+          width: 16px;
+          height: 16px;
+          border: 3px solid #ff1d6c;
+        }
+      }
+      .text.circle {
+        border-radius: 50%;
+      }
+      .taiwan {
+        color: #ff1d6c;
+        text-shadow: 4px 4px 4px rgb(13 11 12 / 20%);
+      }
+    }
+    h2 {
+      font-size: 1rem;
+      color: #ffff;
+    }
+  }
+  .keyword-search {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    input {
+      width: 100%;
+      min-height: 40px;
+      padding: 8px 12px;
+      font-size: 1rem;
+      color: #0d0b0c;
+      background-color: #fff;
+      border: 0 solid #ced4da;
+      border-radius: 6px;
+    }
+  }
+  .selection {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    select {
+      width: 45%;
+      min-height: 40px;
+      padding: 8px 12px;
+      font-size: 1rem;
+      color: #0d0b0c;
+      background-color: #fff;
+      border: 0 solid #ced4da;
+      border-radius: 6px;
+    }
+    button {
+      width: 6%;
+      background-color: #ff1d6c;
+      border: none;
+      border-radius: 4px;
+
+    }
+  }
+}
+
+.lower-part {
+  background-color: #E5E5E5;
+  .activity-title {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 60px 0 1rem;
+  }
+}
+
+.activity-list-wrapper {
+  width: 100%;
+  max-width: 1020px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  .card {
+    display: flex;
+    width: calc(50% - .5rem);
+    // border: 1px solid red;
+    margin-right: .5rem;
+    margin-bottom: 3rem;
+    padding: 1rem;
+    background-color: #ffff;
+    position: relative;
+    @include mobile {
+      width: 100%;
+    }
+    .image-wrapper {
+      width: 40%;
+      img {
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+      }
+    }
+    .content {
+      width: 60%;
+      margin-left: 1rem;
+      .title {
+        font-size: 1rem;
+      }
+      .description {
+        margin-top: 14px;
+        margin-bottom: 14px;
+        display: -webkit-box;
+        text-overflow: ellipsis;
+        overflow:hidden;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        font-size: 14px;
+        line-height: 21px;
+        color: #ACACAC;
+        font-weight: 400;
+        @include ipad {
+          -webkit-line-clamp: 3;
+        }
+        // https://developer.mozilla.org/zh-CN/docs/Web/CSS/-webkit-line-clamp
+      }
+      .info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        button {
+          border: 1px solid #FF1D6C;
+          padding: 8px 18px;
+          border-radius: .25rem;
+          font-size: 14px;
+          line-height: 21px;
+          color: #FF1D6C;
+          background-color: transparent;
+          @include ipad {
+            padding: 4px;
+          }
+        }
+      }
+    }
+  }
+}
+// .food-list-wrapper {
+//   width: 100%;
+//   max-width: 1020px;
+//   display: flex;
+//   flex-wrap: wrap;
+//   margin: 0 auto;
+//   .shadow {
+//      position: relative;
+//      &:before,
+//      &:after {
+//        content: "";
+//        width: 50%;
+//        height: 50px;
+//        position: absolute;
+//        background-color: rgba(0, 0, 0, 0.3);
+//        // 設定 - 1 就會不見，並不是預期中跑到卡片下面
+//        z-index: -1;
+//      }
+//      &:before {
+//        bottom: -25%;
+//        right: 0;
+//        transform: skewY(6deg);
+//      }
+//      &:after {
+//        bottom: -25%;
+//        left: 0;
+//        transform: skewY(-6deg);
+//      }
+//    }
+//   .item {
+//     background-color: #ffff;
+//     width: calc(100% / 5 - 8px);
+//     margin-right: .5rem;
+//     margin-top: 28px;
+//     margin-bottom: 35px;
+//     padding: 12px;
+//     .image-wrapper {
+//       height: 124px;
+//       img {
+//         width: 100%;
+//         height: 100%;
+//         object-fit: cover;
+//         object-position: center center;
+//       }
+//     }
+//     .content {
+//       .title {
+//         height: 42px;
+//         font-size: 14px;
+//         margin-top: 10px;
+//       }
+//       p {
+//         font-size: 12px;
+//         color: #007350;
+//         margin-bottom: 15px;
+//       }
+//     }
+//   }
+//   .item:nth-child(5) {
+//     margin-right: 0;    
+//   }
+// }
+
+.food-list-wrapper {
+  width: 100%;
+  max-width: 1020px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  .shadow {
+    position: relative;
+    // z-index: 0;
+    &:before,
+    &:after {
+      content: "";
+      width: 50%;
+      height: 50px;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.3);
+      filter: blur(3px);
+      // 設定 - 1 就會不見，並不是預期中跑到卡片下面
+      z-index: -1;
+    }
+    &:before {
+      bottom: -25%;
+      right: 0;
+      transform: skewY(6deg);
+    }
+    &:after {
+      bottom: -25%;
+      left: 0;
+      transform: skewY(-6deg);
+    }
+  }
+  .item {
+    background-color: #ffff;
+    width: calc(100% / 5 - 8px);
+    margin-right: .5rem;
+    margin-top: 28px;
+    margin-bottom: 35px;
+    padding: 12px;
+    @include ipad {
+      width: calc(100% / 4 - 8px);
+    }
+    @include mobile {
+      width: calc(100% / 2 - 8px);
+    }
+    // border: 1px solid red;
+    .image-wrapper {
+      height: 124px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+      }
+    }
+    .content {
+      .title {
+        height: 42px;
+        font-size: 14px;
+        // margin-top: 10px;
+        margin: 12px 0;
+      }
+      p {
+        font-size: 12px;
+        color: #007350;
+        margin-bottom: 15px;
+        span {
+          display: -webkit-box;
+          text-overflow: ellipsis;
+          overflow:hidden;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+        }
+      }
+    }
+  }
+}
+// .card {
+//   &:before {
+//     content: "";
+//     position: absolute;
+//     width: 50%;
+//     height: 50px;
+//     color: red;
+//   }
+//   &:after {
+//     content: "";
+//     position: absolute;
+//   }
+// }
+.card:nth-child(even) {
+  margin-right: 0;
+}
+.activity-title.normal-title {
+  padding: 0;
+}
+footer {
+  min-height: 65px;
+  padding: 2rem 0;
+  text-align: center;
+  color: #ACACAC;
+  font-size: 12px;
+  a {
+    color: #FF1D6C;
+    text-decoration: none;
+  }
+}
+.card-shadow {
+  display: flex;
+  position: relative;
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 50px;
+    background-color: rgba(13,11,12,.2);
+  }
+  &:before {
+    transform: skewY(6deg);
+    bottom: 0;
+    right: 0;
+  }
+  &:after {
+    transform: skewY(-6deg);
+  }
+
+}
