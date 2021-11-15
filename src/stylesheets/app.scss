@@ -2,10 +2,10 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  // position: relative;
 }
 
 body {
+  background-color: #E5E5E5;
   li {
     list-style-type: none;
   }
@@ -26,12 +26,6 @@ body {
   @media (max-width: 767px) {
     @content;
   }
-}
-
-main {
-  // width: 100%;
-  // max-width: 95%;
-  // margin: 0 auto;
 }
 
 .navbar {
@@ -150,6 +144,7 @@ main {
 
 .banner {
   position: relative;
+  background-color: #fff;
   .image-wrapper {
     height: 380px;
     padding: 16px;
@@ -242,7 +237,8 @@ main {
 }
 
 .lower-part {
-  background-color: #E5E5E5;
+  //
+  // background-color: #E5E5E5;
   .activity-title {
     max-width: 1020px;
     margin: 0 auto;
@@ -322,68 +318,6 @@ main {
     }
   }
 }
-// .food-list-wrapper {
-//   width: 100%;
-//   max-width: 1020px;
-//   display: flex;
-//   flex-wrap: wrap;
-//   margin: 0 auto;
-//   .shadow {
-//      position: relative;
-//      &:before,
-//      &:after {
-//        content: "";
-//        width: 50%;
-//        height: 50px;
-//        position: absolute;
-//        background-color: rgba(0, 0, 0, 0.3);
-//        // 設定 - 1 就會不見，並不是預期中跑到卡片下面
-//        z-index: -1;
-//      }
-//      &:before {
-//        bottom: -25%;
-//        right: 0;
-//        transform: skewY(6deg);
-//      }
-//      &:after {
-//        bottom: -25%;
-//        left: 0;
-//        transform: skewY(-6deg);
-//      }
-//    }
-//   .item {
-//     background-color: #ffff;
-//     width: calc(100% / 5 - 8px);
-//     margin-right: .5rem;
-//     margin-top: 28px;
-//     margin-bottom: 35px;
-//     padding: 12px;
-//     .image-wrapper {
-//       height: 124px;
-//       img {
-//         width: 100%;
-//         height: 100%;
-//         object-fit: cover;
-//         object-position: center center;
-//       }
-//     }
-//     .content {
-//       .title {
-//         height: 42px;
-//         font-size: 14px;
-//         margin-top: 10px;
-//       }
-//       p {
-//         font-size: 12px;
-//         color: #007350;
-//         margin-bottom: 15px;
-//       }
-//     }
-//   }
-//   .item:nth-child(5) {
-//     margin-right: 0;    
-//   }
-// }
 
 .food-list-wrapper {
   width: 100%;
@@ -391,31 +325,6 @@ main {
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
-  .shadow {
-    position: relative;
-    // z-index: 0;
-    &:before,
-    &:after {
-      content: "";
-      width: 50%;
-      height: 50px;
-      position: absolute;
-      background-color: rgba(0, 0, 0, 0.3);
-      filter: blur(3px);
-      // 設定 - 1 就會不見，並不是預期中跑到卡片下面
-      z-index: -1;
-    }
-    &:before {
-      bottom: -25%;
-      right: 0;
-      transform: skewY(6deg);
-    }
-    &:after {
-      bottom: -25%;
-      left: 0;
-      transform: skewY(-6deg);
-    }
-  }
   .item {
     background-color: #ffff;
     width: calc(100% / 5 - 8px);
@@ -461,19 +370,6 @@ main {
     }
   }
 }
-// .card {
-//   &:before {
-//     content: "";
-//     position: absolute;
-//     width: 50%;
-//     height: 50px;
-//     color: red;
-//   }
-//   &:after {
-//     content: "";
-//     position: absolute;
-//   }
-// }
 .card:nth-child(even) {
   margin-right: 0;
 }
@@ -481,6 +377,7 @@ main {
   padding: 0;
 }
 footer {
+  background-color: #fff;
   min-height: 65px;
   padding: 2rem 0;
   text-align: center;
@@ -491,24 +388,72 @@ footer {
     text-decoration: none;
   }
 }
-.card-shadow {
-  display: flex;
+
+.shadow {
   position: relative;
+  // z-index: 0;
+  &:before,
+  &:after {
+    content: "";
+    width: 50%;
+    height: 50px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    filter: blur(5px);
+    // 設定 - 1 就會不見，並不是預期中跑到卡片下面
+    z-index: -1;
+    bottom: 1%;
+  }
+  &:before {
+    // bottom: -25%;
+    right: 1.8%;
+    transform: skewY(14deg);
+  }
+  &:after {
+    // bottom: -25%;
+    left: 1.8%;
+    transform: skewY(-14deg);
+  }
+}
+.shadow-large {
   &:before,
   &:after {
     content: "";
     position: absolute;
-    width: 50%;
-    height: 50px;
-    background-color: rgba(13,11,12,.2);
+    width: 60%;
+    height: 60px;
+    bottom: 4%;
+    background-color: rgba(0, 0, 0, 0.3);
+    filter: blur(5px);
+    z-index: -1;
   }
   &:before {
-    transform: skewY(6deg);
-    bottom: 0;
-    right: 0;
+    right: 1%;
+    transform: skewY(14deg);
   }
   &:after {
-    transform: skewY(-6deg);
+    left: 1%;
+    transform: skewY(-14deg);
   }
-
+}
+.shadow-super-large {
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      width: 50%;
+      height: 60px;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+      filter: blur(5px);
+      z-index: -1;
+    }
+    &:before {
+      right: .5%;
+      transform: skewY(5deg);
+    }
+    &:after {
+      left: .5%;
+      transform: skewY(-5deg);
+    }
 }

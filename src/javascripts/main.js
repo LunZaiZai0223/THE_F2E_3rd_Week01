@@ -60,7 +60,7 @@ const Control = (() => {
     let content = '';
     data.forEach(value => {
       content += `
-      <li class="card">
+      <li class="card shadow-large">
         <div class="image-wrapper"><img src="${value.Picture.PictureUrl1}" alt=""></div>
           <div class="content">
             <h1 class="title">${value.Name}</h1>
@@ -82,7 +82,7 @@ const Control = (() => {
       let content = '';
       data.forEach(obj => {
         content += `
-        <li class="item">
+        <li class="item shadow">
           <div class="image-wrapper">
             <img src="${obj.Picture.PictureUrl1}" alt="">
           </div>

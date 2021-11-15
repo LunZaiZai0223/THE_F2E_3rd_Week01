@@ -4,6 +4,9 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #E5E5E5;
+}
 body li {
   list-style-type: none;
 }
@@ -127,6 +130,7 @@ body button {
 
 .banner {
   position: relative;
+  background-color: #fff;
 }
 .banner .image-wrapper {
   height: 380px;
@@ -221,9 +225,6 @@ body button {
   border-radius: 4px;
 }
 
-.lower-part {
-  background-color: #E5E5E5;
-}
 .lower-part .activity-title {
   max-width: 1020px;
   margin: 0 auto;
@@ -313,28 +314,6 @@ body button {
   flex-wrap: wrap;
   margin: 0 auto;
 }
-.food-list-wrapper .shadow {
-  position: relative;
-}
-.food-list-wrapper .shadow:before, .food-list-wrapper .shadow:after {
-  content: "";
-  width: 50%;
-  height: 50px;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.3);
-  filter: blur(3px);
-  z-index: -1;
-}
-.food-list-wrapper .shadow:before {
-  bottom: -25%;
-  right: 0;
-  transform: skewY(6deg);
-}
-.food-list-wrapper .shadow:after {
-  bottom: -25%;
-  left: 0;
-  transform: skewY(-6deg);
-}
 .food-list-wrapper .item {
   background-color: #ffff;
   width: calc(100% / 5 - 8px);
@@ -389,6 +368,7 @@ body button {
 }
 
 footer {
+  background-color: #fff;
   min-height: 65px;
   padding: 2rem 0;
   text-align: center;
@@ -400,24 +380,64 @@ footer a {
   text-decoration: none;
 }
 
-.card-shadow {
-  display: flex;
+.shadow {
   position: relative;
 }
-.card-shadow:before, .card-shadow:after {
+.shadow:before, .shadow:after {
+  content: "";
+  width: 50%;
+  height: 50px;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+  filter: blur(5px);
+  z-index: -1;
+  bottom: 1%;
+}
+.shadow:before {
+  right: 1.8%;
+  transform: skewY(14deg);
+}
+.shadow:after {
+  left: 1.8%;
+  transform: skewY(-14deg);
+}
+
+.shadow-large:before, .shadow-large:after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 60px;
+  bottom: 4%;
+  background-color: rgba(0, 0, 0, 0.3);
+  filter: blur(5px);
+  z-index: -1;
+}
+.shadow-large:before {
+  right: 1%;
+  transform: skewY(14deg);
+}
+.shadow-large:after {
+  left: 1%;
+  transform: skewY(-14deg);
+}
+
+.shadow-super-large:before, .shadow-super-large:after {
   content: "";
   position: absolute;
   width: 50%;
-  height: 50px;
-  background-color: rgba(13, 11, 12, 0.2);
-}
-.card-shadow:before {
-  transform: skewY(6deg);
+  height: 60px;
   bottom: 0;
-  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  filter: blur(5px);
+  z-index: -1;
 }
-.card-shadow:after {
-  transform: skewY(-6deg);
+.shadow-super-large:before {
+  right: 0.5%;
+  transform: skewY(5deg);
+}
+.shadow-super-large:after {
+  left: 0.5%;
+  transform: skewY(-5deg);
 }
 
 /*# sourceMappingURL=app.css.map */
