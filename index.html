@@ -7,164 +7,301 @@
     <title>不打包的版本</title>
   </head>
   <body>
-    <main>
-      <nav class="navbar">
-        <div class="content">
-          <div class="logo-wrapper"><img src="./src/images/LOGO.jpg" alt=""></div>
-          <ul class="cat-group">
-            <li><img src="./src/images/Frame 41.svg" alt="">台灣景點</li>
-            <li><img src="./src/images/Frame 42.svg" alt="">美食住宿</li>
-            <li><img src="./src/images/Frame 43.svg" alt="">景點交通</li>
-          </ul>
+    <div id="overlay"></div>
+    <div class="modal" data-modals>
+      <div class="dialog" id="dialog">
+        <div class="header">
+          <button data-close-modal-buttons>&times;</button>
         </div>
-      </nav>
-      <div class="banner shadow-super-large">
-        <div class="image-wrapper">
-          <img src="https://images.unsplash.com/photo-1569841991387-0626a27d5cca?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1074&q=80" alt="">
+        <div class="image-wrapper" data-image-wrapper>
+          <img src="https://www.taiwan.net.tw/att/event/50882fb8-6e13-49dc-8d8a-f7b83de20fe3.jpg" alt="">
         </div>
-        <div class="banner-content">
-          <h1>Welc<i class="text circle">o</i>me t<i class="text">o</i> <span class="taiwan">Taiwan</span></h1>
-          <h2>台北、台中、台南、屏東、宜蘭……遊遍台灣</h2>
-          <form class="keyword-search" action="#" method="GET">
-            <input type="text" placeholder="搜尋關鍵字">
-          </form>
-          <div class="selection">
-            <select name="" id="">
-              <option value="">類別</option>
-              <option value="">景點</option>
-              <option value="">活動</option>
-            </select>
-            <select name="" id="">
-              <option value="">臺北市</option>
-              <option value="">新北市</option>
-              <option value="">桃園市</option>
-              <option value="">臺中市</option>
-              <option value="">臺南市</option>
-              <option value="">高雄市</option>
-              <option value="">基隆市</option>
-              <option value="">新竹市</option>
-              <option value="">新竹縣</option>
-              <option value="">苗栗縣</option>
-              <option value="">彰化縣</option>
-              <option value="">南投縣</option>
-              <option value="">雲林縣</option>
-              <option value="">嘉義縣</option>
-              <option value="">嘉義市</option>
-              <option value="">屏東縣</option>
-              <option value="">宜蘭縣</option>
-              <option value="">花蓮縣</option>
-              <option value="">臺東縣</option>
-              <option value="">金門縣</option>
-              <option value="">澎湖縣</option>
-              <option value="">連江縣</option>
-            </select>
-            <button>
-          <svg width="24" height="24"><path d="M19.5902 18.8006L19.5899 18.8003L17.4894 16.6039C18.5988 15.2274 19.267 13.4511 19.267 11.5169C19.267 7.17433 15.8923 3.61429 11.7089 3.61429C7.52548 3.61429 4.15 7.17428 4.15 11.5169C4.15 15.8595 7.52544 19.4204 11.7089 19.4204C13.3801 19.4204 14.9252 18.8502 16.1759 17.889L18.2995 20.1079L18.3 20.1084C18.4754 20.291 18.709 20.3857 18.9447 20.3857C19.1801 20.3857 19.4157 20.2916 19.5917 20.1051C19.9374 19.742 19.9353 19.1622 19.5902 18.8006ZM5.96031 11.5169C5.96031 8.17123 8.55457 5.47767 11.7089 5.47767C14.8624 5.47767 17.4567 8.1712 17.4567 11.5169C17.4567 14.8627 14.8623 17.557 11.7089 17.557C8.55463 17.557 5.96031 14.8627 5.96031 11.5169Z" fill="white" stroke="white" stroke-width="0.7"></path></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-    <section class="lower-part">
-      <div class="city-list"></div>
-    <h4 class="activity-title"><svg style="margin-right: 6px; transform: translateY(2px);" width="20" height="17"><path d="M10 0L0 16.1905H20L10 0Z" fill="#FF1D6C"></path></svg>熱門活動</h4>
-    <ul class="activity-list-wrapper" data-activity-list>
-      <li class="card">
-        <div class="image-wrapper"><img src="https://www.taiwan.net.tw/att/event/50882fb8-6e13-49dc-8d8a-f7b83de20fe3.jpg" alt=""></div>
-        <div class="content">
-          <h1 class="title">2021日月潭萬人泳渡</h1>
-          <p class="description">起始於1983年的日月潭國際萬人泳渡活動，每年中秋節前後舉辦，是日月潭最具歷史與規模的活動，2002年正式列入世界游泳名人堂。泳渡全程約3,000公尺，每年均吸引來自海內外四面八方上萬名游泳愛好者參加，幾乎在開放報名即迅速額滿的「日月潭萬人泳渡」嘉年華盛事，場面盛況空前。</p>
-          <div class="info">
-            <div class="area">南投縣 魚池鄉</div>
-            <button>活動詳情</button>
-          </div>
-        </div>
-      </li>
-      <li class="card">
-        <div class="image-wrapper"><img src="https://www.taiwan.net.tw/att/event/50882fb8-6e13-49dc-8d8a-f7b83de20fe3.jpg" alt=""></div>
-        <div class="content">
-          <h1 class="title">2021日月潭萬人泳渡</h1>
-          <p class="description">起始於1983年的日月潭國際萬人泳渡活動，每年中秋節前後舉辦，是日月潭最具歷史與規模的活動，2002年正式列入世界游泳名人堂。泳渡全程約3,000公尺，每年均吸引來自海內外四面八方上萬名游泳愛好者參加，幾乎在開放報名即迅速額滿的「日月潭萬人泳渡」嘉年華盛事，場面盛況空前。</p>
-          <div class="info">
-            <div class="area">南投縣 魚池鄉</div>
-            <button>活動詳情</button>
-          </div>
-        </li>
-        <li class="card">
-          <div class="image-wrapper"><img src="https://www.taiwan.net.tw/att/event/50882fb8-6e13-49dc-8d8a-f7b83de20fe3.jpg" alt=""></div>
-          <div class="content">
-            <h1 class="title">2021日月潭萬人泳渡</h1>
-            <p class="description">起始於1983年的日月潭國際萬人泳渡活動，每年中秋節前後舉辦，是日月潭最具歷史與規模的活動，2002年正式列入世界游泳名人堂。泳渡全程約3,000公尺，每年均吸引來自海內外四面八方上萬名游泳愛好者參加，幾乎在開放報名即迅速額滿的「日月潭萬人泳渡」嘉年華盛事，場面盛況空前。</p>
-            <div class="info">
-              <div class="area">南投縣 魚池鄉</div>
-              <button>活動詳情</button>
+        <h3>2021南投世界茶業博覽會</h3>
+        <p>2019年南投世界茶業博覽會邁入第10年每年創下優異的營業額，近年與台灣工藝研究發展中心合作並將縣內之茶、竹產業、茶竹文化與創意商品等作行銷宣傳與推廣，藉由活動，不只在創造商機、增加農民的收入，並帶動周邊及整體觀光產業；讓傳統農業轉型，加強品牌行銷，增加市場的競爭力，讓茶與竹之文化創意商品化；茶道與竹藝融合，同時以世界博覽會的形式，展售各國的特色茶樣，展示南投的竹工藝術，呈現多元茶與竹文化，進而塑造出世界台灣島的精神，提高台灣茶葉的曝光率與知名度。眾所期待的千人茶會、千人揉茶、茶與音樂，還有茶薰六覺，亦在大操場或樹蔭下自然呈現。在黃金品茗館裡，可以品飲到來自台灣各地比賽茶的特等茶。中興會堂及青少年活動中心同時邀請中、日、韓等世界各地的茶道展演，使與會的民眾能對國際茶文化、茶產業能有更廣大的認識視野。</p>
+        <div class="info-group">
+          <div class="item">
+            <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M10 0.5C15.2383 0.5 19.5 4.7617 19.5 10C19.5 15.2383 15.2383 19.5 10 19.5C4.7617 19.5 0.5 15.2383 0.5 10C0.5 4.7617 4.7617 0.5 10 0.5ZM10 1.925C5.54735 1.925 1.925 5.54735 1.925 10C1.925 14.4527 5.54735 18.075 10 18.075C14.4527 18.075 18.075 14.4527 18.075 10C18.075 5.54735 14.4527 1.925 10 1.925ZM9.67814 5.34063C10.0724 5.34063 10.3906 5.65983 10.3906 6.05313V10.254L13.6254 12.1825C13.9626 12.3849 14.0738 12.8219 13.8724 13.1601C13.7384 13.3833 13.5019 13.5078 13.2596 13.5078C13.1352 13.5078 13.0098 13.4755 12.8948 13.408L9.31334 11.2715C9.09864 11.1423 8.96564 10.9095 8.96564 10.6587V6.05313C8.96564 5.65983 9.28484 5.34063 9.67814 5.34063Z" fill="#FF1D6C"/>
+              </svg><span data-time>時間</span>
             </div>
-          </li>
-          <li class="card">
-            <div class="image-wrapper"><img src="https://www.taiwan.net.tw/att/event/50882fb8-6e13-49dc-8d8a-f7b83de20fe3.jpg" alt=""></div>
-            <div class="content">
-              <h1 class="title">2021日月潭萬人泳渡</h1>
-              <p class="description">起始於1983年的日月潭國際萬人泳渡活動，每年中秋節前後舉辦，是日月潭最具歷史與規模的活動，2002年正式列入世界游泳名人堂。泳渡全程約3,000公尺，每年均吸引來自海內外四面八方上萬名游泳愛好者參加，幾乎在開放報名即迅速額滿的「日月潭萬人泳渡」嘉年華盛事，場面盛況空前。</p>
-              <div class="info">
-                <div class="area">南投縣 魚池鄉</div>
-                <button>活動詳情</button>
+            <div class="item">
+              <svg width="20" height="16" viewbox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M15.9218 0.267456C17.8943 0.267456 19.4991 1.85639 19.4991 3.80853L19.5 6.1009C19.5 6.27587 19.4302 6.44555 19.3056 6.56927C19.1819 6.69387 19.0131 6.76369 18.8372 6.76369C18.1417 6.76369 17.5761 7.31867 17.5761 8.0009C17.5761 8.68313 18.1417 9.23811 18.8372 9.23811C19.2031 9.23811 19.5 9.53504 19.5 9.9009V12.1915C19.5 14.1436 17.8952 15.7326 15.9227 15.7326H4.0773C2.10484 15.7326 0.5 14.1436 0.5 12.1915V9.9009C0.5 9.53504 0.79693 9.23811 1.16279 9.23811C1.85828 9.23811 2.42386 8.68313 2.42386 8.0009C2.42386 7.33811 1.88126 6.83792 1.16279 6.83792C0.98693 6.83792 0.81814 6.76811 0.694419 6.6435C0.569814 6.51978 0.5 6.35011 0.5 6.17513L0.500884 3.80853C0.500884 1.85639 2.10572 0.267456 4.07819 0.267456H15.9218ZM15.9218 1.59304H12.2968L12.2973 3.29084C12.2973 3.6567 12.0004 3.95363 11.6345 3.95363C11.2687 3.95363 10.9717 3.6567 10.9717 3.29084L10.9712 1.59304H4.07819C2.83656 1.59304 1.82647 2.58722 1.82647 3.80853L1.82558 5.59187C2.94526 5.86671 3.74944 6.82643 3.74944 8.0009C3.74944 9.18685 2.93112 10.1872 1.82558 10.478V12.1915C1.82558 13.4128 2.83567 14.407 4.0773 14.407H10.9712L10.9717 13.0916C10.9717 12.7248 11.2687 12.4288 11.6345 12.4288C12.0004 12.4288 12.2973 12.7248 12.2973 13.0916L12.2968 14.407H15.9227C17.1643 14.407 18.1744 13.4128 18.1744 12.1915V10.478C17.0689 10.1872 16.2506 9.18685 16.2506 8.0009C16.2506 6.81406 17.068 5.81457 18.1744 5.52383L18.1735 3.80853C18.1735 2.58722 17.1634 1.59304 15.9218 1.59304ZM11.6345 5.1319C12.0004 5.1319 12.2973 5.42883 12.2973 5.79469V10.0551C12.2973 10.421 12.0004 10.7179 11.6345 10.7179C11.2687 10.7179 10.9717 10.421 10.9717 10.0551V5.79469C10.9717 5.42883 11.2687 5.1319 11.6345 5.1319Z" fill="#FF1D6C"/>
+                </svg><span data-ticket>票價</span>
               </div>
-            </li>
-          </ul>
-          <h4 class="activity-title normal-title"><svg style="margin-right: 6px; transform: translateY(2px);" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="20" height="20" transform="matrix(-1 0 0 1 20 0)" fill="#FFB72C"/>
-          </svg>
-          熱門餐飲</h4>
-          <ul class="food-list-wrapper" data-food-list>
-            <li class="item">
-              <div class="image-wrapper">
-                <img src="https://www.matsu-nsa.gov.tw/FileArtPic.ashx?id=2913&w=1280&h=960" alt="">
+              <div class="item">
+                <svg width="20" height="16" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M8 19.7777C8 19.7777 16 14.4444 16 8.22217C16 6.10044 15.1571 4.06561 13.6569 2.56531C12.1566 1.06502 10.1217 0.222168 8 0.222168C5.87827 0.222168 3.84344 1.06502 2.34315 2.56531C0.842855 4.06561 0 6.10044 0 8.22217C0 14.4444 8 19.7777 8 19.7777ZM10.6676 8.22236C10.6676 9.69512 9.47364 10.889 8.00088 10.889C6.52812 10.889 5.33421 9.69512 5.33421 8.22236C5.33421 6.7496 6.52812 5.55569 8.00088 5.55569C9.47364 5.55569 10.6676 6.7496 10.6676 8.22236Z" fill="#FF1D6C"/>
+                  </svg><span data-location>地點</span>
+                </div>
+                <div class="item">
+                  <svg width="20" height="17" viewbox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 0L0 16.1905H20L10 0Z" fill="#FF1D6C"></path></svg><span data-category>分類</span></div>
+                </div>
               </div>
+            </div>
+            <main>
+              <nav class="navbar">
+                <div class="content">
+                  <div class="logo-wrapper"><img src="./src/images/LOGO.jpg" alt=""></div>
+                  <ul class="cat-group">
+                    <li><img src="./src/images/Frame 41.svg" alt="">台灣景點</li>
+                    <li><img src="./src/images/Frame 42.svg" alt="">美食住宿</li>
+                  </ul>
+                </div>
+              </nav>
+              <div class="banner shadow-super-large">
+                <div class="image-wrapper">
+                  <img src="https://images.unsplash.com/photo-1569841991387-0626a27d5cca?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1074&q=80" alt="">
+                </div>
+                <div class="banner-content">
+                  <h1>Welc<i class="text circle">o</i>me t<i class="text">o</i> <span class="taiwan">Taiwan</span></h1>
+                  <h2>台北、台中、台南、屏東、宜蘭……遊遍台灣</h2>
+                  <form class="keyword-search" action="#" method="GET">
+                    <input type="text" placeholder="搜尋關鍵字">
+                  </form>
+                  <div class="selection">
+                    <select name="" id="">
+                      <option value="">類別</option>
+                      <option value="">景點</option>
+                      <option value="">活動</option>
+                    </select>
+                    <select name="" id="">
+                      <option value="">臺北市</option>
+                      <option value="">新北市</option>
+                      <option value="">桃園市</option>
+                      <option value="">臺中市</option>
+                      <option value="">臺南市</option>
+                      <option value="">高雄市</option>
+                      <option value="">基隆市</option>
+                      <option value="">新竹市</option>
+                      <option value="">新竹縣</option>
+                      <option value="">苗栗縣</option>
+                      <option value="">彰化縣</option>
+                      <option value="">南投縣</option>
+                      <option value="">雲林縣</option>
+                      <option value="">嘉義縣</option>
+                      <option value="">嘉義市</option>
+                      <option value="">屏東縣</option>
+                      <option value="">宜蘭縣</option>
+                      <option value="">花蓮縣</option>
+                      <option value="">臺東縣</option>
+                      <option value="">金門縣</option>
+                      <option value="">澎湖縣</option>
+                      <option value="">連江縣</option>
+                    </select>
+                    <button>
+                  <svg width="24" height="24"><path d="M19.5902 18.8006L19.5899 18.8003L17.4894 16.6039C18.5988 15.2274 19.267 13.4511 19.267 11.5169C19.267 7.17433 15.8923 3.61429 11.7089 3.61429C7.52548 3.61429 4.15 7.17428 4.15 11.5169C4.15 15.8595 7.52544 19.4204 11.7089 19.4204C13.3801 19.4204 14.9252 18.8502 16.1759 17.889L18.2995 20.1079L18.3 20.1084C18.4754 20.291 18.709 20.3857 18.9447 20.3857C19.1801 20.3857 19.4157 20.2916 19.5917 20.1051C19.9374 19.742 19.9353 19.1622 19.5902 18.8006ZM5.96031 11.5169C5.96031 8.17123 8.55457 5.47767 11.7089 5.47767C14.8624 5.47767 17.4567 8.1712 17.4567 11.5169C17.4567 14.8627 14.8623 17.557 11.7089 17.557C8.55463 17.557 5.96031 14.8627 5.96031 11.5169Z" fill="white" stroke="white" stroke-width="0.7"></path></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <section class="lower-part">
+              <div class="city">
+              <h4><svg style="margin-right: 6px; transform: translateY(2px);" width="20" height="17"><path d="M10 0L0 16.1905H20L10 0Z" fill="#FF1D6C"></path></svg>熱門城市</h4>
+              <div class="slider" data-slider>
+                <div class="slider-inner" data-slider-inner>
+                  <div class="slider-image"><img src="https://images.unsplash.com/photo-1572715381359-002b1eabd56b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="">
+                    <div class="spot">
+                      <div>
+                      <svg width="16" height="20"><path d="M8 19.7777C8 19.7777 16 14.4444 16 8.22217C16 6.10044 15.1571 4.06561 13.6569 2.56531C12.1566 1.06502 10.1217 0.222168 8 0.222168C5.87827 0.222168 3.84344 1.06502 2.34315 2.56531C0.842855 4.06561 0 6.10044 0 8.22217C0 14.4444 8 19.7777 8 19.7777ZM10.6676 8.22236C10.6676 9.69512 9.47364 10.889 8.00088 10.889C6.52812 10.889 5.33421 9.69512 5.33421 8.22236C5.33421 6.7496 6.52812 5.55569 8.00088 5.55569C9.47364 5.55569 10.6676 6.7496 10.6676 8.22236Z" fill="white"></path></svg></div>
+                    <h3>臺北</h3></div>
+                  </div>
+                  <div class="slider-image-large">
+                    <div class="image-box">
+                      <img src="https://images.unsplash.com/photo-1604928593985-5ee2939764e0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="">
+                      <div class="spot">
+                        <div>
+                        <svg width="16" height="20"><path d="M8 19.7777C8 19.7777 16 14.4444 16 8.22217C16 6.10044 15.1571 4.06561 13.6569 2.56531C12.1566 1.06502 10.1217 0.222168 8 0.222168C5.87827 0.222168 3.84344 1.06502 2.34315 2.56531C0.842855 4.06561 0 6.10044 0 8.22217C0 14.4444 8 19.7777 8 19.7777ZM10.6676 8.22236C10.6676 9.69512 9.47364 10.889 8.00088 10.889C6.52812 10.889 5.33421 9.69512 5.33421 8.22236C5.33421 6.7496 6.52812 5.55569 8.00088 5.55569C9.47364 5.55569 10.6676 6.7496 10.6676 8.22236Z" fill="white"></path></svg></div>
+                      <h3>新北</h3></div>
+                    </div>
+                    <div class="image-box">
+                      <img src="https://media.istockphoto.com/photos/travel-in-taiwan-picture-id1296268103?b=1&k=20&m=1296268103&s=170667a&w=0&h=4R06Jwf_QvhCAo0psthul4Nn29OkplscWDspf1Zf5gk=" alt="">
+                      <div class="spot">
+                        <div>
+                        <svg width="16" height="20"><path d="M8 19.7777C8 19.7777 16 14.4444 16 8.22217C16 6.10044 15.1571 4.06561 13.6569 2.56531C12.1566 1.06502 10.1217 0.222168 8 0.222168C5.87827 0.222168 3.84344 1.06502 2.34315 2.56531C0.842855 4.06561 0 6.10044 0 8.22217C0 14.4444 8 19.7777 8 19.7777ZM10.6676 8.22236C10.6676 9.69512 9.47364 10.889 8.00088 10.889C6.52812 10.889 5.33421 9.69512 5.33421 8.22236C5.33421 6.7496 6.52812 5.55569 8.00088 5.55569C9.47364 5.55569 10.6676 6.7496 10.6676 8.22236Z" fill="white"></path></svg></div>
+                      <h3>桃園</h3></div>
+                    </div>
+                  </div>
+                  <div class="slider-image"><img src="https://images.unsplash.com/photo-1604753966841-1f7e1a34faf8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1175&q=80" alt="">
+                    <div class="spot">
+                      <div>
+                      <svg width="16" height="20"><path d="M8 19.7777C8 19.7777 16 14.4444 16 8.22217C16 6.10044 15.1571 4.06561 13.6569 2.56531C12.1566 1.06502 10.1217 0.222168 8 0.222168C5.87827 0.222168 3.84344 1.06502 2.34315 2.56531C0.842855 4.06561 0 6.10044 0 8.22217C0 14.4444 8 19.7777 8 19.7777ZM10.6676 8.22236C10.6676 9.69512 9.47364 10.889 8.00088 10.889C6.52812 10.889 5.33421 9.69512 5.33421 8.22236C5.33421 6.7496 6.52812 5.55569 8.00088 5.55569C9.47364 5.55569 10.6676 6.7496 10.6676 8.22236Z" fill="white"></path></svg></div>
+                    <h3>臺中</h3></div>
+                  </div>
+                  <div class="slider-image-large">
+                    <div class="image-box">
+                      <img src="https://images.unsplash.com/photo-1621315892013-f32af7358947?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="">
+                      <div class="spot">
+                        <div>
+                        <svg width="16" height="20"><path d="M8 19.7777C8 19.7777 16 14.4444 16 8.22217C16 6.10044 15.1571 4.06561 13.6569 2.56531C12.1566 1.06502 10.1217 0.222168 8 0.222168C5.87827 0.222168 3.84344 1.06502 2.34315 2.56531C0.842855 4.06561 0 6.10044 0 8.22217C0 14.4444 8 19.7777 8 19.7777ZM10.6676 8.22236C10.6676 9.69512 9.47364 10.889 8.00088 10.889C6.52812 10.889 5.33421 9.69512 5.33421 8.22236C5.33421 6.7496 6.52812 5.55569 8.00088 5.55569C9.47364 5.55569 10.6676 6.7496 10.6676 8.22236Z" fill="white"></path></svg></div>
+                      <h3>臺南</h3></div>
+                    </div>
+                    <div class="image-box">
+                      <img src="https://images.unsplash.com/photo-1571555788467-71d9e3add426?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="">
+                      <div class="spot">
+                        <div>
+                        <svg width="16" height="20"><path d="M8 19.7777C8 19.7777 16 14.4444 16 8.22217C16 6.10044 15.1571 4.06561 13.6569 2.56531C12.1566 1.06502 10.1217 0.222168 8 0.222168C5.87827 0.222168 3.84344 1.06502 2.34315 2.56531C0.842855 4.06561 0 6.10044 0 8.22217C0 14.4444 8 19.7777 8 19.7777ZM10.6676 8.22236C10.6676 9.69512 9.47364 10.889 8.00088 10.889C6.52812 10.889 5.33421 9.69512 5.33421 8.22236C5.33421 6.7496 6.52812 5.55569 8.00088 5.55569C9.47364 5.55569 10.6676 6.7496 10.6676 8.22236Z" fill="white"></path></svg></div>
+                      <h3>高雄</h3></div>
+                    </div>
+                  </div>
+                  <div class="slider-image"><img src="https://images.unsplash.com/photo-1585061532944-1858c59c1416?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=880&q=80" alt="">
+                    <div class="spot">
+                      <div>
+                      <svg width="16" height="20"><path d="M8 19.7777C8 19.7777 16 14.4444 16 8.22217C16 6.10044 15.1571 4.06561 13.6569 2.56531C12.1566 1.06502 10.1217 0.222168 8 0.222168C5.87827 0.222168 3.84344 1.06502 2.34315 2.56531C0.842855 4.06561 0 6.10044 0 8.22217C0 14.4444 8 19.7777 8 19.7777ZM10.6676 8.22236C10.6676 9.69512 9.47364 10.889 8.00088 10.889C6.52812 10.889 5.33421 9.69512 5.33421 8.22236C5.33421 6.7496 6.52812 5.55569 8.00088 5.55569C9.47364 5.55569 10.6676 6.7496 10.6676 8.22236Z" fill="white"></path></svg></div>
+                    <h3>新竹</h3></div>
+                  </div>
+                  <div class="slider-image-large">
+                    <div class="image-box">
+                      <img src="https://images.unsplash.com/photo-1605961002058-06a4606c178c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1074&q=80" alt="">
+                      <div class="spot">
+                        <div>
+                        <svg width="16" height="20"><path d="M8 19.7777C8 19.7777 16 14.4444 16 8.22217C16 6.10044 15.1571 4.06561 13.6569 2.56531C12.1566 1.06502 10.1217 0.222168 8 0.222168C5.87827 0.222168 3.84344 1.06502 2.34315 2.56531C0.842855 4.06561 0 6.10044 0 8.22217C0 14.4444 8 19.7777 8 19.7777ZM10.6676 8.22236C10.6676 9.69512 9.47364 10.889 8.00088 10.889C6.52812 10.889 5.33421 9.69512 5.33421 8.22236C5.33421 6.7496 6.52812 5.55569 8.00088 5.55569C9.47364 5.55569 10.6676 6.7496 10.6676 8.22236Z" fill="white"></path></svg></div>
+                      <h3>南投</h3></div>
+                    </div>
+                    <div class="image-box">
+                      <img src="https://images.unsplash.com/photo-1575467627652-0c597f6dba77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="">
+                      <div class="spot">
+                        <div>
+                        <svg width="16" height="20"><path d="M8 19.7777C8 19.7777 16 14.4444 16 8.22217C16 6.10044 15.1571 4.06561 13.6569 2.56531C12.1566 1.06502 10.1217 0.222168 8 0.222168C5.87827 0.222168 3.84344 1.06502 2.34315 2.56531C0.842855 4.06561 0 6.10044 0 8.22217C0 14.4444 8 19.7777 8 19.7777ZM10.6676 8.22236C10.6676 9.69512 9.47364 10.889 8.00088 10.889C6.52812 10.889 5.33421 9.69512 5.33421 8.22236C5.33421 6.7496 6.52812 5.55569 8.00088 5.55569C9.47364 5.55569 10.6676 6.7496 10.6676 8.22236Z" fill="white"></path></svg></div>
+                      <h3>嘉義</h3></div>
+                    </div>
+                  </div>
+                  <div class="slider-image"><img src="https://images.unsplash.com/photo-1601482919239-20305ad33545?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="">
+                    <div class="spot">
+                      <div>
+                      <svg width="16" height="20"><path d="M8 19.7777C8 19.7777 16 14.4444 16 8.22217C16 6.10044 15.1571 4.06561 13.6569 2.56531C12.1566 1.06502 10.1217 0.222168 8 0.222168C5.87827 0.222168 3.84344 1.06502 2.34315 2.56531C0.842855 4.06561 0 6.10044 0 8.22217C0 14.4444 8 19.7777 8 19.7777ZM10.6676 8.22236C10.6676 9.69512 9.47364 10.889 8.00088 10.889C6.52812 10.889 5.33421 9.69512 5.33421 8.22236C5.33421 6.7496 6.52812 5.55569 8.00088 5.55569C9.47364 5.55569 10.6676 6.7496 10.6676 8.22236Z" fill="white"></path></svg></div>
+                    <h3>屏東</h3></div>
+                  </div>
+                  <div class="slider-image-large">
+                    <div class="image-box">
+                      <img src="https://images.unsplash.com/photo-1594961261419-f82caf8039ec?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="">
+                      <div class="spot">
+                        <div>
+                        <svg width="16" height="20"><path d="M8 19.7777C8 19.7777 16 14.4444 16 8.22217C16 6.10044 15.1571 4.06561 13.6569 2.56531C12.1566 1.06502 10.1217 0.222168 8 0.222168C5.87827 0.222168 3.84344 1.06502 2.34315 2.56531C0.842855 4.06561 0 6.10044 0 8.22217C0 14.4444 8 19.7777 8 19.7777ZM10.6676 8.22236C10.6676 9.69512 9.47364 10.889 8.00088 10.889C6.52812 10.889 5.33421 9.69512 5.33421 8.22236C5.33421 6.7496 6.52812 5.55569 8.00088 5.55569C9.47364 5.55569 10.6676 6.7496 10.6676 8.22236Z" fill="white"></path></svg></div>
+                      <h3>宜蘭</h3></div>
+                    </div>
+                    <div class="image-box">
+                      <img src="https://images.unsplash.com/photo-1624650737915-bd0c4031af80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="">
+                      <div class="spot">
+                        <div>
+                        <svg width="16" height="20"><path d="M8 19.7777C8 19.7777 16 14.4444 16 8.22217C16 6.10044 15.1571 4.06561 13.6569 2.56531C12.1566 1.06502 10.1217 0.222168 8 0.222168C5.87827 0.222168 3.84344 1.06502 2.34315 2.56531C0.842855 4.06561 0 6.10044 0 8.22217C0 14.4444 8 19.7777 8 19.7777ZM10.6676 8.22236C10.6676 9.69512 9.47364 10.889 8.00088 10.889C6.52812 10.889 5.33421 9.69512 5.33421 8.22236C5.33421 6.7496 6.52812 5.55569 8.00088 5.55569C9.47364 5.55569 10.6676 6.7496 10.6676 8.22236Z" fill="white"></path></svg></div>
+                      <h3>花蓮</h3></div>
+                    </div>
+                  </div>
+                  <div class="slider-image"><img src="https://images.unsplash.com/photo-1596710896942-fc108eb5a709?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1074&q=80" alt="">
+                    <div class="spot">
+                      <div>
+                      <svg width="16" height="20"><path d="M8 19.7777C8 19.7777 16 14.4444 16 8.22217C16 6.10044 15.1571 4.06561 13.6569 2.56531C12.1566 1.06502 10.1217 0.222168 8 0.222168C5.87827 0.222168 3.84344 1.06502 2.34315 2.56531C0.842855 4.06561 0 6.10044 0 8.22217C0 14.4444 8 19.7777 8 19.7777ZM10.6676 8.22236C10.6676 9.69512 9.47364 10.889 8.00088 10.889C6.52812 10.889 5.33421 9.69512 5.33421 8.22236C5.33421 6.7496 6.52812 5.55569 8.00088 5.55569C9.47364 5.55569 10.6676 6.7496 10.6676 8.22236Z" fill="white"></path></svg></div>
+                    <h3>台東</h3></div>
+                  </div>
+                  <div class="slider-image"><img src="https://media.istockphoto.com/photos/sunset-view-of-the-trail-to-jiangong-islet-in-kinmen-taiwan-picture-id1288625660?b=1&k=20&m=1288625660&s=170667a&w=0&h=Jvltb3bVwPfBDZ-Im9Si46rC-S1jq3EE8MGgiPucdwA=" alt="">
+                    <div class="spot">
+                      <div>
+                      <svg width="16" height="20"><path d="M8 19.7777C8 19.7777 16 14.4444 16 8.22217C16 6.10044 15.1571 4.06561 13.6569 2.56531C12.1566 1.06502 10.1217 0.222168 8 0.222168C5.87827 0.222168 3.84344 1.06502 2.34315 2.56531C0.842855 4.06561 0 6.10044 0 8.22217C0 14.4444 8 19.7777 8 19.7777ZM10.6676 8.22236C10.6676 9.69512 9.47364 10.889 8.00088 10.889C6.52812 10.889 5.33421 9.69512 5.33421 8.22236C5.33421 6.7496 6.52812 5.55569 8.00088 5.55569C9.47364 5.55569 10.6676 6.7496 10.6676 8.22236Z" fill="white"></path></svg></div>
+                    <h3>離島地區</h3></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <h4 class="activity-title"><svg style="margin-right: 6px; transform: translateY(2px);" width="20" height="17"><path d="M10 0L0 16.1905H20L10 0Z" fill="#FF1D6C"></path></svg>熱門活動</h4>
+          <ul class="activity-list-wrapper" data-activity-list>
+            <li class="card">
+              <div class="image-wrapper"><img src="https://www.taiwan.net.tw/att/event/50882fb8-6e13-49dc-8d8a-f7b83de20fe3.jpg" alt=""></div>
               <div class="content">
-                <h2 class="title">友誼山莊簡餐</h2>
-                <p><span>連江縣莒光鄉田澳村67號</span></p>
+                <h1 class="title">2021日月潭萬人泳渡</h1>
+                <p class="description">起始於1983年的日月潭國際萬人泳渡活動，每年中秋節前後舉辦，是日月潭最具歷史與規模的活動，2002年正式列入世界游泳名人堂。泳渡全程約3,000公尺，每年均吸引來自海內外四面八方上萬名游泳愛好者參加，幾乎在開放報名即迅速額滿的「日月潭萬人泳渡」嘉年華盛事，場面盛況空前。</p>
+                <div class="info">
+                  <div class="area">南投縣 魚池鄉</div>
+                  <button>活動詳情</button>
+                </div>
               </div>
             </li>
-            <li class="item">
-              <div class="image-wrapper">
-                <img src="https://www.matsu-nsa.gov.tw/FileArtPic.ashx?id=2913&w=1280&h=960" alt="">
-              </div>
+            <li class="card">
+              <div class="image-wrapper"><img src="https://www.taiwan.net.tw/att/event/50882fb8-6e13-49dc-8d8a-f7b83de20fe3.jpg" alt=""></div>
               <div class="content">
-                <h2 class="title">友誼山莊簡餐</h2>
-                <p><span>連江縣莒光鄉田澳村67號</span></p>
-              </div>
-            </li>
-            <li class="item">
-              <div class="image-wrapper">
-                <img src="https://www.matsu-nsa.gov.tw/FileArtPic.ashx?id=2913&w=1280&h=960" alt="">
-              </div>
-              <div class="content">
-                <h2 class="title">友誼山莊簡餐</h2>
-                <p><span>連江縣莒光鄉田澳村67號</span></p>
-              </div>
-            </li>
-            <li class="item">
-              <div class="image-wrapper">
-                <img src="https://www.matsu-nsa.gov.tw/FileArtPic.ashx?id=2913&w=1280&h=960" alt="">
-              </div>
-              <div class="content">
-                <h2 class="title">友誼山莊簡餐</h2>
-                <p><span>連江縣莒光鄉田澳村67號</span></p>
-              </div>
-            </li>
-            <li class="item">
-              <div class="image-wrapper">
-                <img src="https://www.matsu-nsa.gov.tw/FileArtPic.ashx?id=2913&w=1280&h=960" alt="">
-              </div>
-              <div class="content">
-                <h2 class="title">友誼山莊簡餐</h2>
-                <p><span>連江縣莒光鄉田澳村67號</span></p>
-              </div>
-            </li>
-          </ul>
-        </section>
-      <footer>Taiwan Tourguide © Code: <a href="https://github.com/LunZaiZai0223">LunZaiZai</a> / Design: <a href="https://www.behance.net/KT_Designer">KT</a></footer>
-    </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.2.0/sha.js" integrity="sha512-mvfoZwdzM8yPhlNxN1lU8S5wcfC5aPRCD3W0jsOeA+D75MMCrycxQqIvt6K7c5P7jItn7AXiAreuR+eockUHwQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="module" defer src="./src/javascripts/main.js"></script>
-  </body>
-</html>
+                <h1 class="title">2021日月潭萬人泳渡</h1>
+                <p class="description">起始於1983年的日月潭國際萬人泳渡活動，每年中秋節前後舉辦，是日月潭最具歷史與規模的活動，2002年正式列入世界游泳名人堂。泳渡全程約3,000公尺，每年均吸引來自海內外四面八方上萬名游泳愛好者參加，幾乎在開放報名即迅速額滿的「日月潭萬人泳渡」嘉年華盛事，場面盛況空前。</p>
+                <div class="info">
+                  <div class="area">南投縣 魚池鄉</div>
+                  <button>活動詳情</button>
+                </div>
+              </li>
+              <li class="card">
+                <div class="image-wrapper"><img src="https://www.taiwan.net.tw/att/event/50882fb8-6e13-49dc-8d8a-f7b83de20fe3.jpg" alt=""></div>
+                <div class="content">
+                  <h1 class="title">2021日月潭萬人泳渡</h1>
+                  <p class="description">起始於1983年的日月潭國際萬人泳渡活動，每年中秋節前後舉辦，是日月潭最具歷史與規模的活動，2002年正式列入世界游泳名人堂。泳渡全程約3,000公尺，每年均吸引來自海內外四面八方上萬名游泳愛好者參加，幾乎在開放報名即迅速額滿的「日月潭萬人泳渡」嘉年華盛事，場面盛況空前。</p>
+                  <div class="info">
+                    <div class="area">南投縣 魚池鄉</div>
+                    <button>活動詳情</button>
+                  </div>
+                </li>
+                <li class="card">
+                  <div class="image-wrapper"><img src="https://www.taiwan.net.tw/att/event/50882fb8-6e13-49dc-8d8a-f7b83de20fe3.jpg" alt=""></div>
+                  <div class="content">
+                    <h1 class="title">2021日月潭萬人泳渡</h1>
+                    <p class="description">起始於1983年的日月潭國際萬人泳渡活動，每年中秋節前後舉辦，是日月潭最具歷史與規模的活動，2002年正式列入世界游泳名人堂。泳渡全程約3,000公尺，每年均吸引來自海內外四面八方上萬名游泳愛好者參加，幾乎在開放報名即迅速額滿的「日月潭萬人泳渡」嘉年華盛事，場面盛況空前。</p>
+                    <div class="info">
+                      <div class="area">南投縣 魚池鄉</div>
+                      <button>活動詳情</button>
+                    </div>
+                  </li>
+                </ul>
+                <h4 class="activity-title normal-title"><svg style="margin-right: 6px; transform: translateY(2px);" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="20" height="20" transform="matrix(-1 0 0 1 20 0)" fill="#FFB72C"/>
+                </svg>
+                熱門餐飲</h4>
+                <ul class="food-list-wrapper" data-food-list>
+                  <li class="item">
+                    <div class="image-wrapper">
+                      <img src="https://www.matsu-nsa.gov.tw/FileArtPic.ashx?id=2913&w=1280&h=960" alt="">
+                    </div>
+                    <div class="content">
+                      <h2 class="title">友誼山莊簡餐</h2>
+                      <p><span>連江縣莒光鄉田澳村67號</span></p>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div class="image-wrapper">
+                      <img src="https://www.matsu-nsa.gov.tw/FileArtPic.ashx?id=2913&w=1280&h=960" alt="">
+                    </div>
+                    <div class="content">
+                      <h2 class="title">友誼山莊簡餐</h2>
+                      <p><span>連江縣莒光鄉田澳村67號</span></p>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div class="image-wrapper">
+                      <img src="https://www.matsu-nsa.gov.tw/FileArtPic.ashx?id=2913&w=1280&h=960" alt="">
+                    </div>
+                    <div class="content">
+                      <h2 class="title">友誼山莊簡餐</h2>
+                      <p><span>連江縣莒光鄉田澳村67號</span></p>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div class="image-wrapper">
+                      <img src="https://www.matsu-nsa.gov.tw/FileArtPic.ashx?id=2913&w=1280&h=960" alt="">
+                    </div>
+                    <div class="content">
+                      <h2 class="title">友誼山莊簡餐</h2>
+                      <p><span>連江縣莒光鄉田澳村67號</span></p>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div class="image-wrapper">
+                      <img src="https://www.matsu-nsa.gov.tw/FileArtPic.ashx?id=2913&w=1280&h=960" alt="">
+                    </div>
+                    <div class="content">
+                      <h2 class="title">友誼山莊簡餐</h2>
+                      <p><span>連江縣莒光鄉田澳村67號</span></p>
+                    </div>
+                  </li>
+                </ul>
+              </section>
+              <footer>Taiwan Tourguide © Code: <a href="https://github.com/LunZaiZai0223">LunZaiZai</a> / Design: <a href="https://www.behance.net/KT_Designer">KT</a></footer>
+            </main>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.2.0/sha.js" integrity="sha512-mvfoZwdzM8yPhlNxN1lU8S5wcfC5aPRCD3W0jsOeA+D75MMCrycxQqIvt6K7c5P7jItn7AXiAreuR+eockUHwQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <script type="module" defer src="./src/javascripts/main.js"></script>
+          </body>
+        </html>

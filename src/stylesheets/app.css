@@ -17,6 +17,83 @@ body button {
   cursor: pointer;
 }
 
+#overlay {
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 15;
+  pointer-events: none;
+}
+
+#overlay.is-active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 50;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  transition: all 0.4s;
+}
+
+.modal.is-active {
+  display: block;
+}
+
+#dialog {
+  width: 100%;
+  max-width: 50%;
+  margin: 1rem auto;
+  padding: 1.5rem;
+  background-color: #fdfdfd;
+}
+#dialog .header {
+  display: flex;
+  justify-content: flex-end;
+}
+#dialog .header button {
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #FF1D6C;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 15px;
+}
+#dialog .image-wrapper img {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+#dialog p {
+  line-height: 24px;
+}
+#dialog .info-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 0;
+}
+#dialog .info-group .item {
+  display: flex;
+  align-items: center;
+}
+#dialog .info-group .item svg {
+  margin-right: 0.5rem;
+}
+#dialog .header, #dialog .image-wrapper, #dialog h3, #dialog p, #dialog .info-group {
+  margin-bottom: 0.5rem;
+}
+
 .navbar {
   display: flex;
   align-items: center;
@@ -225,6 +302,77 @@ body button {
   border-radius: 4px;
 }
 
+.city {
+  width: 100%;
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 60px 0 40px;
+  position: relative;
+}
+.city h4 {
+  margin-bottom: 16px;
+}
+.city .slider {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+  position: relative;
+}
+.city .slider .slider-inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  width: 200%;
+  height: 100%;
+  gap: 5px;
+  pointer-events: none;
+}
+.city .slider .slider-image {
+  padding: 12px;
+  background-color: #fff;
+  box-shadow: rgba(13, 11, 12, 0.2) 0px 4px 4px 0px;
+  position: relative;
+  max-height: 260px;
+}
+.city .slider .slider-image-large {
+  display: flex;
+  flex-direction: column;
+  max-height: 260px;
+  justify-content: space-between;
+}
+.city .slider .slider-image-large .image-box {
+  width: 100%;
+  height: calc(50% - 3px);
+  padding: 6px;
+  background-color: #fff;
+  position: relative;
+  box-shadow: rgba(13, 11, 12, 0.2) 0px 4px 4px 0px;
+}
+.city .spot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.city .spot div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.city .spot h3 {
+  margin-top: 5px;
+  font-size: 20px;
+  color: #fff;
+}
+.city img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
 .lower-part .activity-title {
   max-width: 1020px;
   margin: 0 auto;
@@ -300,6 +448,11 @@ body button {
   line-height: 21px;
   color: #FF1D6C;
   background-color: transparent;
+  transition: color 0.3s, background-color 0.3s;
+}
+.activity-list-wrapper .card .content .info button:hover {
+  color: #fff;
+  background-color: #FF1D6C;
 }
 @media (max-width: 768px) {
   .activity-list-wrapper .card .content .info button {
