@@ -59,6 +59,7 @@ body {
 }
 #dialog {
   width: 100%;
+  // 小螢幕的話 max-width 要大一點
   max-width: 50%;
   margin: 1rem auto;
   padding: 1.5rem;
@@ -89,6 +90,15 @@ body {
       max-width: 100%;
       object-fit: cover;
     }
+  }
+  .background-image {
+    height: 300px;
+    width: 100%;
+    background-image: url('../images/placeholder_large.svg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 6px;
   }
   p {
     line-height: 24px;
@@ -480,7 +490,7 @@ body {
   }
 }
 
-.food-list-wrapper {
+.food-list-wrapper, .attraction-list {
   width: 100%;
   max-width: 1020px;
   display: flex;
@@ -536,6 +546,31 @@ body {
 }
 .activity-title.normal-title {
   padding: 0;
+}
+.attraction-list {
+  .item {
+    .background-image {
+      height: 150px;
+      width: 100%;
+      background-image: url('../images/placeholder.svg');
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .content {
+      .title {
+        height: auto;
+      }
+      p {
+        display: -webkit-box;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        color: #ACACAC;
+      }
+    }
+  }
 }
 footer {
   background-color: #fff;
