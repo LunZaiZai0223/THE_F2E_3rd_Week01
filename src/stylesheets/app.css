@@ -220,6 +220,7 @@ body button {
 .banner .image-wrapper {
   height: 380px;
   padding: 16px;
+  margin-bottom: 20px;
 }
 .banner .image-wrapper img {
   width: 100%;
@@ -391,7 +392,6 @@ body button {
   width: 100%;
   max-width: 1020px;
   margin: 0 auto;
-  padding-bottom: 40px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -421,6 +421,9 @@ body button {
 .activity-list-wrapper .card .content {
   width: 60%;
   margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .activity-list-wrapper .card .content .title {
   font-size: 1rem;
@@ -619,6 +622,22 @@ footer a {
 .shadow-super-large:after {
   left: 0.5%;
   transform: skewY(-5deg);
+}
+
+.pagination {
+  max-width: 200px;
+  margin: 1rem auto;
+  display: flex;
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+}
+.pagination button {
+  padding: 0.5rem 0.8rem;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  border-radius: 0.25rem;
 }
 
 /*# sourceMappingURL=app.css.map */
