@@ -26,8 +26,7 @@ const onlyFoodAndHotels = (() =>{
     hotelSkip -= parseInt(num);
   }
 
-  const hotelDivEle = document.querySelector('.hotels');
-  const hotelUlEle = document.querySelector('.hotels ul');
+
 /*
 1. 移除不要的元素
 2. 顯示 pagination
@@ -36,6 +35,8 @@ const onlyFoodAndHotels = (() =>{
 5. hotel 新抓
  */
   function initialize() {
+    const hotelDivEle = document.querySelector('.hotels');
+    const hotelUlEle = document.querySelector('.hotels ul');
     const cityDivEle = document.querySelector('.city');
     const activitiesWrapper = document.querySelector('.activity-list-wrapper');
     const activitiesPagination = document.querySelector('[data-section="activities"]');
@@ -53,12 +54,24 @@ const onlyFoodAndHotels = (() =>{
     // 因為是偷吃步先隱藏 hotel 再顯示
     // 所以裡面的資料也要更新
     // 之後函式要想到「靈活度」！！要不然我現在是改到死==
-    const url = Control.setApiUrl(baseUrl, 'Hotel?$', ['$format=JSON', '$top=10']);
+    const url = Control.setApiUrl(baseUrl, 'Hotel?', ['$format=JSON', '$top=10']);
     getData(url).then(data => {
       Control.setHotelsArr(data);
       Control.addClickEventToUlEle(hotelUlEle);
       render(hotelUlEle, createHotelIdem(data));
     });
+  }
+  // 因為 food 是拿原本的資料，不過第二次載入就沒了
+  // => 再重新載入 
+  // ==> 卡片事件需要重新綁
+  function foodSecondLoad () {
+    const ulEle = document.querySelector('[data-list="food"]');
+    const url = Control.setApiUrl(baseUrl, 'Restaurant?', ['$format=JSON', '$top=10']);
+    getData(url).then(data => {
+      Control.renderFood(data, ulEle);
+    });
+    // Control.renderFood()
+    // const foodUl = document.querySelector('')
   }
 
 
@@ -133,6 +146,7 @@ const onlyFoodAndHotels = (() =>{
     createHotelIdem,
     createFoodIdem,
     render,
+    foodSecondLoad,
     getFoodSkip,
     addFoodSkip,
     minusFoodSkip,

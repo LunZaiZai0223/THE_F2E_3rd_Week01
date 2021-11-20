@@ -23,19 +23,31 @@ const Control = (() => {
   const onlyFoodAndHotelEle = changeModeEle[1];
   console.log(onlyActAndAttEle, onlyFoodAndHotelEle);
 
+  // 用來控制是不是第一次載入
+  let isSecondTimeChangePage = false;
+
   onlyActAndAttEle.addEventListener('click', () => {
+    if (isSecondTimeChangePage) {
+      pageInitialize();
+    }
     Pagination.initialize();
     document.querySelector('[data-section="activities"]').style.display = 'flex';
     document.querySelector('[data-section="attractions"]').style.display = 'flex';
     onlyActAndAtt.renderActivities();
     onlyActAndAtt.renderAttractions();
+    isSecondTimeChangePage = true;
   });
 
   onlyFoodAndHotelEle.addEventListener('click', () => {
+    if (isSecondTimeChangePage) {
+      pageInitialize();
+    }
     document.querySelector('[data-section="food"]').style.display = 'flex';
     document.querySelector('[data-section="hotels"]').style.display = 'flex';
     onlyFoodAndHotels.initialize();
+    onlyFoodAndHotels.foodSecondLoad();
     Pagination.initialize();
+    isSecondTimeChangePage = true;
   });
 
   // 之後要整理一下初始化要做什麼事情
@@ -78,6 +90,54 @@ const Control = (() => {
   }
   function setFoodArr (newData) {
     foodArr = newData;
+  }
+  function pageInitialize () {
+    const lowerPartSectionEle = document.querySelector('.lower-part');
+    lowerPartSectionEle.innerHTML = `
+    <div class="city"></div>
+    <h4 class="activity-title"><svg style="margin-right: 6px; transform: translateY(2px);" width="20" height="17"><path d="M10 0L0 16.1905H20L10 0Z" fill="#FF1D6C"></path></svg>熱門活動</h4>
+    <ul class="activity-list-wrapper" data-activity-list></ul>
+    <div class="pagination" data-section="activities">
+      <button data-pagination="pre" data-length="8" style="display: flex;">PRE</button>
+      <span>1</span>
+      <button data-pagination="next" data-length="8">NEXT</button>
+    </div>
+    <h4 class="activity-title normal-title">
+      <svg style="margin-right: 6px; transform: translateY(2px);" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="20" height="20" transform="matrix(-1 0 0 1 20 0)" fill="#FFB72C"/>
+    </svg>熱門餐飲</h4>
+    <ul class="food-list-wrapper" data-list="food"></ul>
+    <div class="pagination" data-section="food">
+      <button data-pagination="pre" data-length="20" style="display: flex;">PRE</button>
+      <span>1</span>
+      <button data-pagination="next" data-length="20">NEXT</button>
+    </div>
+    <div class="attractions">
+      <h4 style="display:flex; align-items:center" class="activity-title normal-title">
+        <svg style="margin-right: 6px" width="20" height="20" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="6" cy="6" r="5.5" fill="#007350"/>
+        </svg>熱門景點
+      </h4>
+      <ul class="attraction-list" data-list="attraction"></ul>
+      <div class="pagination" data-section="attractions">
+        <button data-pagination="pre" data-length="20" style="display: flex;">PRE</button>
+        <span>1</span>
+        <button data-pagination="next" data-length="20">NEXT</button>
+      </div>
+    </div>
+    <div class="hotels">
+      <h4 style="display:flex; align-items:center" class="activity-title normal-title">
+        <svg style="margin-right: 6px" width="20" height="20" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="6" cy="6" r="5.5" fill="#007350"/></svg>熱門住宿
+      </h4>
+      <ul class="attraction-list" data-list="hotels"></ul>
+      <div class="pagination" data-section="hotels">
+        <button data-pagination="pre" data-length="20" style="display: flex;">PRE</button>
+        <span>1</span>
+        <button data-pagination="next" data-length="20">NEXT</button>
+      </div>
+    </div>
+    `;
   }
 
   /*
@@ -154,8 +214,13 @@ const Control = (() => {
     }
     return content;
     }
-    function renderFood (data) {
-      const ulEle = document.querySelectorAll('[data-list]')[0];
+    function renderFood (data, ul) {
+      let ulEle = '';
+      if (ul) {
+        ulEle = ul;
+      } else {
+        ulEle = document.querySelectorAll('[data-list]')[0];
+        }
       let content = '';
       data.forEach((obj, currentIndex) => {
         content += `
@@ -451,6 +516,7 @@ const Control = (() => {
     renderActivies, 
     addEventToActivitiesBtns,
     renderAttractions,
+    renderFood,
     addClickEventToUlEle,
     getActivitiesArr,
     setActivitiesArr,
@@ -466,75 +532,76 @@ const Control = (() => {
 /*
 城市列表拖移
  */
-const slider = document.querySelector('[data-slider]');
-const sliderInner = document.querySelector('[data-slider-inner]');
-let isPressed = false;
-// 目前滑鼠離 slider 的距離
-let startX;
-let x;
+const Slider = (() => {
+  const slider = document.querySelector('[data-slider]');
+  const sliderInner = document.querySelector('[data-slider-inner]');
+  let isPressed = false;
+  // 目前滑鼠離 slider 的距離
+  let startX;
+  let x;
 
-console.log(slider, sliderInner);
+  console.log(slider, sliderInner);
 
-slider.addEventListener('mousedown', (event) => {
-  // slider.style.cursor = ''
-  isPressed = true;
-  slider.style.cursor = 'grabbing';
-  startX = event.offsetX - sliderInner.offsetLeft;
-  console.log('現在startX', startX);
-  console.log(`sliderInner 距離祖先 city 的 x 軸 px 為${sliderInner.offsetLeft}`);
-  console.log(`目前滑鼠至 slider 的 x px 為${event.offsetX}`);
-  console.log(`isPressed`, isPressed);
-});
+  slider.addEventListener('mousedown', (event) => {
+    // slider.style.cursor = ''
+    isPressed = true;
+    slider.style.cursor = 'grabbing';
+    startX = event.offsetX - sliderInner.offsetLeft;
+    console.log('現在startX', startX);
+    console.log(`sliderInner 距離祖先 city 的 x 軸 px 為${sliderInner.offsetLeft}`);
+    console.log(`目前滑鼠至 slider 的 x px 為${event.offsetX}`);
+    console.log(`isPressed`, isPressed);
+  });
 
-slider.addEventListener('mouseenter', (event) => {
-  console.log("I'm in!");
-  slider.style.cursor = 'pointer';
-});
+  slider.addEventListener('mouseenter', (event) => {
+    console.log("I'm in!");
+    slider.style.cursor = 'pointer';
+  });
 
-slider.addEventListener('mouseup', (event) => {
-  console.log('起身');
-  slider.style.cursor = 'pointer';
-});
+  slider.addEventListener('mouseup', (event) => {
+    console.log('起身');
+    slider.style.cursor = 'pointer';
+  });
 
-slider.addEventListener('mousemove', (event) => {
-  if (!isPressed) return;
-  event.preventDefault();
-  x = event.offsetX;
-  console.log('現在x', x);
-  console.log('startX', startX);
-  console.log('hello');
-  console.log(`${x - startX}`);
-  sliderInner.style.left = `${x - startX}px`;
-  checkBoundary();
-});
+  slider.addEventListener('mousemove', (event) => {
+    if (!isPressed) return;
+    event.preventDefault();
+    x = event.offsetX;
+    console.log('現在x', x);
+    console.log('startX', startX);
+    console.log('hello');
+    console.log(`${x - startX}`);
+    sliderInner.style.left = `${x - startX}px`;
+    checkBoundary();
+  });
 
-// window 的時間最後會分配給全部 DOM elements
-// 當然也會給 slider 
-// => 用來控制現在可不可以滑動的開關 （isPressed）
-window.addEventListener('mouseup', (event) => {
-  isPressed = false;
-  console.log(`isPressed`, isPressed);
-  console.log('window mouseup');
-});
+  // window 的時間最後會分配給全部 DOM elements
+  // 當然也會給 slider 
+  // => 用來控制現在可不可以滑動的開關 （isPressed）
+  window.addEventListener('mouseup', (event) => {
+    isPressed = false;
+    console.log(`isPressed`, isPressed);
+    console.log('window mouseup');
+  });
 
-function checkBoundary () {
-  const outer = slider.getBoundingClientRect();
-  const inner = sliderInner.getBoundingClientRect();
+  function checkBoundary () {
+    const outer = slider.getBoundingClientRect();
+    const inner = sliderInner.getBoundingClientRect();
 
-  console.log(outer);
-  console.log(inner);
+    console.log(outer);
+    console.log(inner);
 
-  if (parseInt(sliderInner.style.left) > 0) {
-    console.log('觸發');
-    sliderInner.style.left = '0px';
-  } else if (inner.right < outer.right) {
-    console.log('到底了');
-    console.log(`-${inner.width - outer.width}px`);
-    sliderInner.style.left = `-${inner.width - outer.width}px`;
+    if (parseInt(sliderInner.style.left) > 0) {
+      console.log('觸發');
+      sliderInner.style.left = '0px';
+    } else if (inner.right < outer.right) {
+      console.log('到底了');
+      console.log(`-${inner.width - outer.width}px`);
+      sliderInner.style.left = `-${inner.width - outer.width}px`;
+    }
   }
-}
+})();
 
-// checkBoundary();
 
 export { Control };
 

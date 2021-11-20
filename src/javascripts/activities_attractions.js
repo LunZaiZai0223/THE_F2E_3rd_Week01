@@ -18,18 +18,24 @@ const onlyActAndAtt = (() => {
     activitiesArr = newData;
   }
 
-  const activityUlEle = document.querySelector('[data-activity-list]');
-  const attractonUlEle = document.querySelector('[data-list=attraction]');
+  let activityUlEle = document.querySelector('[data-activity-list]');
+  let attractonUlEle = document.querySelector('[data-list=attraction]');
   console.log(attractonUlEle);
 
   const lowerPartSectionEle = document.querySelector('.lower-part');
-  const cityDivEle = document.querySelector('.city');
+
   const unneededTitleEle = document.querySelector('.normal-title');
   const foodListUlEle = document.querySelector('.food-list-wrapper');
+  
   // const activityTitle = document.querySelector('')
   console.log('切換！');
   // 第一次轉換頁面
   function renderActivities (newData) {
+    const hotelDivEle = document.querySelector('.hotels');
+    const cityDivEle = document.querySelector('.city');
+    activityUlEle = document.querySelector('[data-activity-list]');
+    attractonUlEle = document.querySelector('[data-list=attraction]');
+
     // Activity?
     // ScenicSpot?
     // https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$top=30&$format=JSON
@@ -42,15 +48,22 @@ const onlyActAndAtt = (() => {
     // `;
     // 
     // 刪除不需要的部分
-    cityDivEle.remove();
+    
+    if (cityDivEle) {
+      cityDivEle.remove();
+    }
     unneededTitleEle.remove();
     foodListUlEle.remove();
+    if (hotelDivEle) {
+      hotelDivEle.remove();
+    }
 
     if (!newData) {
     const url = Control.setApiUrl(baseUrl, 'Activity?', ['$format=JSON', '$top=8']);
     getData(url).then(data => {
       Control.setActivitiesArr(data);
       console.log(Control.getActivitiesArr());
+      console.log(activityUlEle);
       // 暫存
       activitiesArr = data;
      
