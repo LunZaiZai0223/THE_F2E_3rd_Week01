@@ -62,7 +62,7 @@ body {
   // 小螢幕的話 max-width 要大一點
   max-width: 50%;
   @include ipad {
-    max-width: 80%;
+    max-width: 90%;
   }
   margin: 1rem auto;
   padding: 1.5rem;

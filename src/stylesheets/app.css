@@ -58,7 +58,7 @@ body button {
 }
 @media (max-width: 768px) {
   #dialog {
-    max-width: 80%;
+    max-width: 90%;
   }
 }
 #dialog .header {
