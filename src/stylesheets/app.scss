@@ -61,6 +61,9 @@ body {
   width: 100%;
   // 小螢幕的話 max-width 要大一點
   max-width: 50%;
+  @include ipad {
+    max-width: 80%;
+  }
   margin: 1rem auto;
   padding: 1.5rem;
   background-color: #fdfdfd;
@@ -302,7 +305,8 @@ body {
   .selection {
     margin-top: 8px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    gap: 10px;
     select {
       width: 45%;
       min-height: 40px;
@@ -312,18 +316,23 @@ body {
       background-color: #fff;
       border: 0 solid #ced4da;
       border-radius: 6px;
+      @include mobile {
+        width: auto;
+      }
     }
     button {
-      width: 6%;
       background-color: #ff1d6c;
       border: none;
       border-radius: 4px;
-
+      width: 10%;
     }
   }
 }
 
 .city {
+  @include ipad {
+    display: none;
+  }
   h4 {
     margin-bottom: 16px;
   }
@@ -587,7 +596,13 @@ footer {
 }
 
 .shadow {
+  cursor: pointer;
   position: relative;
+  bottom: 0;
+  transition: bottom .3s;
+  &:hover {
+    bottom: 5px;
+  }
   // z-index: 0;
   &:before,
   &:after {

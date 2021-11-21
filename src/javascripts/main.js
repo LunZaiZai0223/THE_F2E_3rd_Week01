@@ -75,6 +75,7 @@ const Control = (() => {
   }
   function setActivitiesArr (newData) {
     activitiesWithPic = newData;
+    console.log(activitiesWithPic);
   }
   function getAttractionsArr () {
     return attractionsArr;
@@ -140,6 +141,8 @@ const Control = (() => {
     `;
   }
 
+
+
   /*
   1. 4 個有圖片的活動
   2. 10 個美食
@@ -154,6 +157,82 @@ const Control = (() => {
     // console.log(apiUrl);
     return apiUrl;
   };
+  const Search = (() => {
+    const searchFormEle = document.querySelector('[data-searchForm]');
+    const typeSelectEle = document.querySelector('select[name="searchingType"]');
+    const areaSelectEle = document.querySelector('select[name="area"]');
+
+    console.log(typeSelectEle);
+    console.log(areaSelectEle);
+
+    addSubmitEventToSearchFormEle();
+
+
+    function addSubmitEventToSearchFormEle () {
+      searchFormEle.addEventListener('submit', submitHandler);
+    }
+    function submitHandler (event) {
+      event.preventDefault();
+      console.log(typeSelectEle.value, areaSelectEle.value);
+      console.log({ typeSelectValue: typeSelectEle.value, areaSelectValue: areaSelectEle.value });
+      searchRender({ typeSelectValue: typeSelectEle.value, areaSelectValue: areaSelectEle.value });
+    }
+    function searchRender ({ typeSelectValue, areaSelectValue }) {
+      if (typeSelectValue === 'default') return console.log('沒選擇類別的篩選');
+      // 第二次載入要馬上新增 DOM => 因為是用移除的，所以一次要給全部的東西
+      if (isSecondTimeChangePage) { pageInitialize(); }
+      if (typeSelectValue === '景點活動') {
+        if (document.querySelector('.normal-title')) {
+          document.querySelector('.normal-title').remove();
+        }
+        console.log('開始搜尋景點活動');
+        getDataWithArea(typeSelectValue ,areaSelectValue);
+      } else if (typeSelectValue === '美食住宿') {
+        getDataWithArea(typeSelectValue, areaSelectValue);
+      }
+      isSecondTimeChangePage = true;
+    }
+    // https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity/Taipei?$top=30&$format=JSON
+    // https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity/NewTaipei?$top=30&$format=JSON
+    function getDataWithArea (typeSelectValue ,areaSelectValue) {
+      // setApiUrl(baseUrl, 'Activity?', ['$format=JSON', '$top=30']));
+      // https://ptx.transportdata.tw/MOTC/v2/Tourism/
+      if (typeSelectValue === '景點活動') {
+        const url1 = setApiUrl(baseUrl, `Activity/${areaSelectValue}?`, ['$format=JSON', '$top=8']);
+        getData(url1).then(dataWithArea => {
+          console.log(dataWithArea);
+          onlyActAndAtt.renderActivities(dataWithArea);
+        });
+        const url2 = setApiUrl(baseUrl, `ScenicSpot/${areaSelectValue}?`, ['format=JSON', '$top=20']);
+        getData(url2).then(dataWithArea => {
+          console.log(dataWithArea);
+          onlyActAndAtt.renderAttractions(dataWithArea);
+        });
+      } else if (typeSelectValue === '美食住宿') {
+        onlyFoodAndHotels.initialize();
+        // https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant/Taipei?$top=50&$format=JSON
+        const url1 = setApiUrl(baseUrl, `Restaurant/${areaSelectValue}?`, ['$format=JSON', '$top=20']);
+        getData(url1).then(dataWithArea => {
+          console.log(dataWithArea);
+          foodArr = dataWithArea;
+          // const item = onlyFoodAndHotels.createFoodIdem(dataWithArea);
+          // document.querySelector('[data-list="food"]');
+          renderFood(dataWithArea, document.querySelector('[data-list="food"]'));
+          // onlyFoodAndHotels.render()
+        });
+        // /Hotel/Taipei?
+        const url2 = setApiUrl(baseUrl, `Hotel/${areaSelectValue}?`, ['$format=JSON', '$top=20']);
+        getData(url2).then(dataWithArea => {
+          console.log(dataWithArea);
+          setHotelsArr(dataWithArea);
+          addClickEventToUlEle(document.querySelector('.hotels ul'));
+          const item = onlyFoodAndHotels.createHotelIdem(dataWithArea);
+          onlyFoodAndHotels.render(document.querySelector('.hotels ul'), item);
+        });
+      }
+    }
+
+  })();
   // 一開始只顯示 4 筆活動的資料
   function getRandomActivities (url) {
     const data = getData(url).then(data => {
@@ -223,6 +302,7 @@ const Control = (() => {
         }
       let content = '';
       data.forEach((obj, currentIndex) => {
+        if (obj.Picture.PictureUrl1 !== undefined) {
         content += `
         <li class="item shadow" data-index=${currentIndex}>
           <div class="image-wrapper">
@@ -234,6 +314,19 @@ const Control = (() => {
           </div>
         </li>
         `;
+      } else {
+        content += `
+        <li class="item shadow" data-index=${currentIndex}>
+          <div class="image-wrapper">
+            <img src="https://raw.githubusercontent.com/LunZaiZai0223/THE_F2E_3rd_Week01/main/src/images/placeholder.svg" alt="">
+          </div>
+          <div class="content">
+            <h2 class="title">${obj.Name}</h2>
+            <p><span><svg style="transform: translateY(3px);" width="16" height="16"><path d="M5.5 13.4444C5.5 13.4444 11 9.77778 11 5.5C11 4.04131 10.4205 2.64236 9.38909 1.61091C8.35764 0.579463 6.95869 0 5.5 0C4.04131 0 2.64236 0.579463 1.61091 1.61091C0.579463 2.64236 0 4.04131 0 5.5C0 9.77778 5.5 13.4444 5.5 13.4444ZM7.33388 5.49991C7.33388 6.51243 6.51307 7.33324 5.50055 7.33324C4.48803 7.33324 3.66721 6.51243 3.66721 5.49991C3.66721 4.48739 4.48803 3.66658 5.50055 3.66658C6.51307 3.66658 7.33388 4.48739 7.33388 5.49991Z" fill="#ff1d6c"></path></svg>${obj.Address}</span></p>
+          </div>
+        </li>
+        `;
+      }
       ulEle.innerHTML = content;
       });
       addClickEventToUlEle(ulEle);
@@ -340,7 +433,11 @@ const Control = (() => {
       } else {
         ticket.closest('.item').style.display = 'none';
       }
-      location.innerText = Address;
+      if (Address !== undefined) {
+        location.innerText = Address;
+      } else {
+        location.closest('.item').style.display = 'none';
+      }
       if (Class1 !== undefined) {
         category.innerText = Class1;
       } else {
@@ -363,14 +460,22 @@ const Control = (() => {
       description.innerText = Description;
       time.innerText = OpenTime;
       location.innerText = Address;
-      category.innerText = Class;
-      // 餐廳沒有 ticket 所以要改成電話
-      ticket.parentElement.innerHTML = `
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M2.68649 3.33726C2.68834 3.33726 2.642 3.38546 2.58361 3.44292C2.35933 3.66072 1.895 4.11393 1.89032 5.06207C1.88295 6.38834 2.75507 8.85089 6.95443 13.0494C11.1343 17.2274 13.5931 18.1098 14.9222 18.1098H14.9416C15.8898 18.1051 16.342 17.6399 16.5608 17.4165C16.6275 17.3479 16.6813 17.2979 16.7193 17.2664C17.6423 16.3377 18.115 15.6463 18.1104 15.2033C18.1039 14.751 17.5413 14.2162 16.7637 13.4766C16.5163 13.2412 16.2475 12.9854 15.9639 12.7018C15.2289 11.9687 14.8647 12.0938 14.064 12.3756C12.9564 12.7639 11.4365 13.2922 9.07496 10.9297C6.70975 8.56636 7.23896 7.04823 7.62636 5.94069C7.90626 5.13992 8.03416 4.77475 7.29827 4.03886C7.01004 3.75155 6.75146 3.47907 6.51327 3.22883C5.77831 2.45586 5.24818 1.89699 4.79868 1.8905H4.79126C4.34732 1.8905 3.65778 2.36503 2.68186 3.34097C2.68464 3.33819 2.68649 3.33726 2.68649 3.33726ZM14.9231 19.5C12.6135 19.5 9.60231 17.6612 5.97201 14.0327C2.32782 10.3894 0.486253 7.36891 0.500077 5.05465C0.508497 3.52541 1.31018 2.74225 1.6114 2.44845C1.62715 2.42898 1.68091 2.37615 1.69944 2.35762C3.02848 1.02764 3.9247 0.490085 4.81629 0.500138C5.85153 0.514183 6.58834 1.289 7.52071 2.2705C7.75148 2.51332 8.00172 2.77747 8.28069 3.05551C9.63382 4.40866 9.24827 5.5125 8.93872 6.39853C8.60136 7.3652 8.30942 8.19934 10.0574 9.94731C11.8072 11.6953 12.6413 11.4033 13.6043 11.0632C14.4912 10.7536 15.5923 10.3662 16.9472 11.7194C17.2216 11.9937 17.482 12.2412 17.7221 12.4701C18.7082 13.4071 19.4867 14.1476 19.4998 15.1857C19.5108 16.0708 18.9732 16.9726 17.6461 18.3007L17.0585 17.9022L17.5552 18.3878C17.2614 18.689 16.4792 19.4917 14.9491 19.5H14.9231Z" fill="#FF1D6C"/>
-      </svg>
-      <span>${Phone}</span>
-      `;
+      if (Class !== undefined) {
+        category.innerText = Class;
+      } else {
+        category.closest('.item').style.display = 'none';
+      }
+      if (Phone !== undefined) {
+        // 餐廳沒有 ticket 所以要改成電話
+        ticket.parentElement.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M2.68649 3.33726C2.68834 3.33726 2.642 3.38546 2.58361 3.44292C2.35933 3.66072 1.895 4.11393 1.89032 5.06207C1.88295 6.38834 2.75507 8.85089 6.95443 13.0494C11.1343 17.2274 13.5931 18.1098 14.9222 18.1098H14.9416C15.8898 18.1051 16.342 17.6399 16.5608 17.4165C16.6275 17.3479 16.6813 17.2979 16.7193 17.2664C17.6423 16.3377 18.115 15.6463 18.1104 15.2033C18.1039 14.751 17.5413 14.2162 16.7637 13.4766C16.5163 13.2412 16.2475 12.9854 15.9639 12.7018C15.2289 11.9687 14.8647 12.0938 14.064 12.3756C12.9564 12.7639 11.4365 13.2922 9.07496 10.9297C6.70975 8.56636 7.23896 7.04823 7.62636 5.94069C7.90626 5.13992 8.03416 4.77475 7.29827 4.03886C7.01004 3.75155 6.75146 3.47907 6.51327 3.22883C5.77831 2.45586 5.24818 1.89699 4.79868 1.8905H4.79126C4.34732 1.8905 3.65778 2.36503 2.68186 3.34097C2.68464 3.33819 2.68649 3.33726 2.68649 3.33726ZM14.9231 19.5C12.6135 19.5 9.60231 17.6612 5.97201 14.0327C2.32782 10.3894 0.486253 7.36891 0.500077 5.05465C0.508497 3.52541 1.31018 2.74225 1.6114 2.44845C1.62715 2.42898 1.68091 2.37615 1.69944 2.35762C3.02848 1.02764 3.9247 0.490085 4.81629 0.500138C5.85153 0.514183 6.58834 1.289 7.52071 2.2705C7.75148 2.51332 8.00172 2.77747 8.28069 3.05551C9.63382 4.40866 9.24827 5.5125 8.93872 6.39853C8.60136 7.3652 8.30942 8.19934 10.0574 9.94731C11.8072 11.6953 12.6413 11.4033 13.6043 11.0632C14.4912 10.7536 15.5923 10.3662 16.9472 11.7194C17.2216 11.9937 17.482 12.2412 17.7221 12.4701C18.7082 13.4071 19.4867 14.1476 19.4998 15.1857C19.5108 16.0708 18.9732 16.9726 17.6461 18.3007L17.0585 17.9022L17.5552 18.3878C17.2614 18.689 16.4792 19.4917 14.9491 19.5H14.9231Z" fill="#FF1D6C"/>
+        </svg>
+        <span>${Phone}</span>
+        `;
+      } else {
+        ticket.closest('.item').style.display = 'none';
+      }
     }
     function changeHotelDialogContent (selectedData) {
       const { Address, Class, Description, HotelName, Phone, ParkingInfo } = selectedData; 
@@ -392,7 +497,11 @@ const Control = (() => {
       }
 
       title.innerText = HotelName;
-      description.innerText = Description;
+      if (Description !== undefined) {
+        description.innerText = Description;
+      } else {
+        description.style.display = 'none';
+      }
       // time 沒有
       time.parentElement.innerHTML = `
       <svg width="20" height="17" viewbox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 0L0 16.1905H20L10 0Z" fill="#FF1D6C"></path></svg>
@@ -526,6 +635,7 @@ const Control = (() => {
   };
 
 })();
+
 
 
 

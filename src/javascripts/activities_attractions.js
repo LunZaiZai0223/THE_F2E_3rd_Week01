@@ -24,7 +24,7 @@ const onlyActAndAtt = (() => {
 
   const lowerPartSectionEle = document.querySelector('.lower-part');
 
-  const unneededTitleEle = document.querySelector('.normal-title');
+
   const foodListUlEle = document.querySelector('.food-list-wrapper');
   
   // const activityTitle = document.querySelector('')
@@ -33,6 +33,7 @@ const onlyActAndAtt = (() => {
   function renderActivities (newData) {
     const hotelDivEle = document.querySelector('.hotels');
     const cityDivEle = document.querySelector('.city');
+    const unneededTitleEle = document.querySelector('.normal-title');
     activityUlEle = document.querySelector('[data-activity-list]');
     attractonUlEle = document.querySelector('[data-list=attraction]');
 
@@ -57,30 +58,36 @@ const onlyActAndAtt = (() => {
     if (hotelDivEle) {
       hotelDivEle.remove();
     }
+    // if (!dataWithArea) {
+      if (!newData) {
+        const url = Control.setApiUrl(baseUrl, 'Activity?', ['$format=JSON', '$top=8']);
+        getData(url).then(data => {
+          Control.setActivitiesArr(data);
+          console.log(Control.getActivitiesArr());
+          console.log(activityUlEle);
+          // 暫存
+          activitiesArr = data;
 
-    if (!newData) {
-    const url = Control.setApiUrl(baseUrl, 'Activity?', ['$format=JSON', '$top=8']);
-    getData(url).then(data => {
-      Control.setActivitiesArr(data);
-      console.log(Control.getActivitiesArr());
-      console.log(activityUlEle);
-      // 暫存
-      activitiesArr = data;
-     
-      /*
-      渲染畫面 
-        1. addModal 事件
-       */
-      Control.renderActivies(activitiesArr, activityUlEle);
-      Control.addEventToActivitiesBtns();
-    });
-  } else {
-    // 為了要彌補我函式寫不靈活的代價 QQ
-    // 要重新去更新 main.js 中暫存的資料
-    Control.setActivitiesArr(newData);
-    Control.renderActivies(activitiesArr, activityUlEle);
-    Control.addEventToActivitiesBtns();
-  }
+          /*
+          渲染畫面 
+            1. addModal 事件
+           */
+          Control.renderActivies(activitiesArr, activityUlEle);
+          Control.addEventToActivitiesBtns();
+        });
+      } else {
+        // 為了要彌補我函式寫不靈活的代價 QQ
+        // 要重新去更新 main.js 中暫存的資料
+        console.log(newData, activityUlEle);
+        Control.setActivitiesArr(newData);
+        activitiesArr = newData;
+        Control.renderActivies(activitiesArr, activityUlEle);
+        Control.addEventToActivitiesBtns();
+      }
+      // 有地區搜尋
+  // } else {
+
+  // }
 
   }
   function renderAttractions (newData) {

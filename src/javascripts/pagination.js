@@ -57,7 +57,7 @@ const Pagination = (() => {
     console.log(section, pagination, length);
     changeData(domTarget, {section, pagination, length}, paginationWrapper);
   }
-  function changeData (domTarget ,{ section,  pagination, length}, paginationWrapper) {
+  function changeData (domTarget ,{ section,  pagination, length }, paginationWrapper) {
     if (domTarget !== 'BUTTON') return console.log('沒點到按鈕');
     if (section === 'activities') {
       if (pagination === 'pre') {
