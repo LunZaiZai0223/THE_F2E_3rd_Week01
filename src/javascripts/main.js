@@ -186,7 +186,7 @@ const Control = (() => {
           document.querySelector('.normal-title').remove();
         }
         console.log('開始搜尋景點活動');
-        getDataWithArea(typeSelectValue ,areaSelectValue);
+        getDataWithArea(typeSelectValue, areaSelectValue);
       } else if (typeSelectValue === '美食住宿') {
         getDataWithArea(typeSelectValue, areaSelectValue);
       }
@@ -194,7 +194,7 @@ const Control = (() => {
     }
     // https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity/Taipei?$top=30&$format=JSON
     // https://ptx.transportdata.tw/MOTC/v2/Tourism/Activity/NewTaipei?$top=30&$format=JSON
-    function getDataWithArea (typeSelectValue ,areaSelectValue) {
+    function getDataWithArea (typeSelectValue, areaSelectValue) {
       // setApiUrl(baseUrl, 'Activity?', ['$format=JSON', '$top=30']));
       // https://ptx.transportdata.tw/MOTC/v2/Tourism/
       if (typeSelectValue === '景點活動') {
@@ -247,7 +247,7 @@ const Control = (() => {
       }
       renderActivies(activitiesWithPic, activityUlEle);
       addEventToActivitiesBtns();
-      }); 
+    });
   }
   function getFoodData (url) {
     const data = getData(url).then(data => {
@@ -259,11 +259,11 @@ const Control = (() => {
     let content = '';
     data.forEach((value, currentIndex) => {
       if (Object.values(value.Picture).length) {
-      content += `
+        content += `
       <li class="card shadow-large">
         <div class="image-wrapper"><img src="${value.Picture.PictureUrl1}" alt=""></div>
           <div class="content">
-            <h1 class="title">${value.Name}</h1>
+            <h1 class="title">${value.ActivityName}</h1>
             <p class="description">${value.Description}</p>
             <div class="info">
               <div class="area" style="display: flex; align-items:center;"><svg width="24" height="24"><path d="M12 21.7778C12 21.7778 20 16.4444 20 10.2222C20 8.10048 19.1571 6.06565 17.6569 4.56536C16.1566 3.06507 14.1217 2.22221 12 2.22221C9.87827 2.22221 7.84344 3.06507 6.34315 4.56536C4.84285 6.06565 4 8.10048 4 10.2222C4 16.4444 12 21.7778 12 21.7778ZM14.6676 10.2224C14.6676 11.6952 13.4736 12.8891 12.0009 12.8891C10.5281 12.8891 9.33421 11.6952 9.33421 10.2224C9.33421 8.74965 10.5281 7.55574 12.0009 7.55574C13.4736 7.55574 14.6676 8.74965 14.6676 10.2224Z" fill="#ff1d6c"></path></svg>${value.Location}</div>
@@ -272,12 +272,12 @@ const Control = (() => {
           </div>
       </li>
       `;
-    } else {
-      content += `
+      } else {
+        content += `
       <li class="card shadow-large">
         <div class="image-wrapper"><img src="https://jason71708.github.io/F2E2021-taiwan-tourist-attractions/static/media/image-placeholder.23273286.svg" alt=""></div>
           <div class="content">
-            <h1 class="title">${value.Name}</h1>
+            <h1 class="title">${value.ActivityName}</h1>
             <p class="description">${value.Description}</p>
             <div class="info">
               <div class="area" style="display: flex; align-items:center;"><svg width="24" height="24"><path d="M12 21.7778C12 21.7778 20 16.4444 20 10.2222C20 8.10048 19.1571 6.06565 17.6569 4.56536C16.1566 3.06507 14.1217 2.22221 12 2.22221C9.87827 2.22221 7.84344 3.06507 6.34315 4.56536C4.84285 6.06565 4 8.10048 4 10.2222C4 16.4444 12 21.7778 12 21.7778ZM14.6676 10.2224C14.6676 11.6952 13.4736 12.8891 12.0009 12.8891C10.5281 12.8891 9.33421 11.6952 9.33421 10.2224C9.33421 8.74965 10.5281 7.55574 12.0009 7.55574C13.4736 7.55574 14.6676 8.74965 14.6676 10.2224Z" fill="#ff1d6c"></path></svg>${value.Location}</div>
@@ -292,24 +292,24 @@ const Control = (() => {
       ulEle.innerHTML = content;
     }
     return content;
+  }
+  function renderFood (data, ul) {
+    let ulEle = '';
+    if (ul) {
+      ulEle = ul;
+    } else {
+      ulEle = document.querySelectorAll('[data-list]')[0];
     }
-    function renderFood (data, ul) {
-      let ulEle = '';
-      if (ul) {
-        ulEle = ul;
-      } else {
-        ulEle = document.querySelectorAll('[data-list]')[0];
-        }
-      let content = '';
-      data.forEach((obj, currentIndex) => {
-        if (obj.Picture.PictureUrl1 !== undefined) {
+    let content = '';
+    data.forEach((obj, currentIndex) => {
+      if (obj.Picture.PictureUrl1 !== undefined) {
         content += `
         <li class="item shadow" data-index=${currentIndex}>
           <div class="image-wrapper">
             <img src="${obj.Picture.PictureUrl1}" alt="">
           </div>
           <div class="content">
-            <h2 class="title">${obj.Name}</h2>
+            <h2 class="title">${obj.RestaurantName}</h2>
             <p><span><svg style="transform: translateY(3px);" width="16" height="16"><path d="M5.5 13.4444C5.5 13.4444 11 9.77778 11 5.5C11 4.04131 10.4205 2.64236 9.38909 1.61091C8.35764 0.579463 6.95869 0 5.5 0C4.04131 0 2.64236 0.579463 1.61091 1.61091C0.579463 2.64236 0 4.04131 0 5.5C0 9.77778 5.5 13.4444 5.5 13.4444ZM7.33388 5.49991C7.33388 6.51243 6.51307 7.33324 5.50055 7.33324C4.48803 7.33324 3.66721 6.51243 3.66721 5.49991C3.66721 4.48739 4.48803 3.66658 5.50055 3.66658C6.51307 3.66658 7.33388 4.48739 7.33388 5.49991Z" fill="#ff1d6c"></path></svg>${obj.Address}</span></p>
           </div>
         </li>
@@ -321,40 +321,40 @@ const Control = (() => {
             <img src="https://raw.githubusercontent.com/LunZaiZai0223/THE_F2E_3rd_Week01/main/src/images/placeholder.svg" alt="">
           </div>
           <div class="content">
-            <h2 class="title">${obj.Name}</h2>
+            <h2 class="title">${obj.RestaurantName}</h2>
             <p><span><svg style="transform: translateY(3px);" width="16" height="16"><path d="M5.5 13.4444C5.5 13.4444 11 9.77778 11 5.5C11 4.04131 10.4205 2.64236 9.38909 1.61091C8.35764 0.579463 6.95869 0 5.5 0C4.04131 0 2.64236 0.579463 1.61091 1.61091C0.579463 2.64236 0 4.04131 0 5.5C0 9.77778 5.5 13.4444 5.5 13.4444ZM7.33388 5.49991C7.33388 6.51243 6.51307 7.33324 5.50055 7.33324C4.48803 7.33324 3.66721 6.51243 3.66721 5.49991C3.66721 4.48739 4.48803 3.66658 5.50055 3.66658C6.51307 3.66658 7.33388 4.48739 7.33388 5.49991Z" fill="#ff1d6c"></path></svg>${obj.Address}</span></p>
           </div>
         </li>
         `;
       }
       ulEle.innerHTML = content;
-      });
-      addClickEventToUlEle(ulEle);
+    });
+    addClickEventToUlEle(ulEle);
+  }
+  function getAttractionsData (url) {
+    const data = getData(url).then(data => {
+      renderAttractions(data);
+    });
+  }
+  function renderAttractions (data, ul) {
+    attractionsArr = data;
+    let ulEle;
+    if (!ul) {
+      ulEle = document.querySelectorAll('[data-list]')[1];
+    } else {
+      ulEle = ul;
     }
-    function getAttractionsData (url) {
-      const data = getData(url).then(data => { 
-        renderAttractions(data);
-        });
-    }
-    function renderAttractions (data, ul) {
-      attractionsArr = data;
-      let ulEle;
-      if (!ul) {
-        ulEle = document.querySelectorAll('[data-list]')[1];
-      } else {
-        ulEle = ul;
-      }
-      let content = '';
-      data.forEach((obj, currentIndex) => {
-        const { Name, DescriptionDetail, Picture} = obj;
-        const { PictureUrl1 } = obj.Picture;
-        if (PictureUrl1) {
+    let content = '';
+    data.forEach((obj, currentIndex) => {
+      const { ScenicSpotName, DescriptionDetail, Picture } = obj;
+      const { PictureUrl1 } = obj.Picture;
+      if (PictureUrl1) {
         content += `
         <li class="item shadow" data-index=${currentIndex}>
           <div class="background-image" style="background-image: url(${PictureUrl1})">
           </div>
           <div class="content">
-            <h2 class="title">${Name}</h2>
+            <h2 class="title">${ScenicSpotName}</h2>
             <p>${DescriptionDetail}</p>
           </div>
         </li>
@@ -365,223 +365,224 @@ const Control = (() => {
           <div class="background-image">
           </div>
           <div class="content">
-            <h2 class="title">${Name}</h2>
+            <h2 class="title">${ScenicSpotName}</h2>
             <p>${DescriptionDetail}</p>
           </div>
         </li>
         `;
-        }
-      });
-      ulEle.innerHTML = content;
-      addClickEventToUlEle(ulEle);
-    }
+      }
+    });
+    ulEle.innerHTML = content;
+    addClickEventToUlEle(ulEle);
+  }
 
-    /*
-    activities btns events
-     */
-    function addEventToActivitiesBtns () {
-      const [...btns] = document.querySelectorAll('[data-actNum]');
-      btns.forEach(btn => { btn.addEventListener('click', actBtnsClickHandler); });
+  /*
+  activities btns events
+   */
+  function addEventToActivitiesBtns () {
+    const [...btns] = document.querySelectorAll('[data-actNum]');
+    btns.forEach(btn => { btn.addEventListener('click', actBtnsClickHandler); });
+  }
+  function actBtnsClickHandler (event) {
+    console.log('我其實叫的到喔，因為我在 addEventToActivitiesBtns 的函式裡');
+    console.log(activitiesWithPic);
+    const index = event.target.dataset.actnum;
+    const selectedData = activitiesWithPic[index];
+    console.log(selectedData);
+    changeActDialogContent(selectedData);
+    openModal(modals[0]);
+  }
+  function changeActDialogContent (selectedData) {
+    const imageWrapper = document.querySelector('#dialog [data-image-wrapper]');
+    const title = document.querySelector('#dialog h3');
+    const description = document.querySelector('#dialog p');
+    const time = document.querySelector('#dialog [data-time]');
+    const ticket = document.querySelector('#dialog [data-ticket]');
+    const location = document.querySelector('#dialog [data-location]');
+    const category = document.querySelector('#dialog [data-category]');
+    imageWrapper.innerHTML = `<img src="${selectedData.Picture.PictureUrl1}" alt="">`;
+    title.innerText = selectedData.Name || selectedData.ActivityName || selectedData.RestaurantName || selectedData.ScenicSpotName;
+    description.innerText = selectedData.Description;
+    time.innerText = `${selectedData.StartTime.split('T')[0]}`;
+    ticket.innerText = selectedData.Charge || '免費';
+    location.innerText = selectedData.Location;
+    category.innerText = selectedData.Class1;
+  }
+  function changeAttDialogContent (selectedData) {
+    const { Address, DescriptionDetail, Name, OpenTime, TicketInfo, Class1 } = selectedData;
+    const { PictureUrl1 } = selectedData.Picture;
+    const imageWrapper = document.querySelector('#dialog [data-image-wrapper]');
+    const title = document.querySelector('#dialog h3');
+    const description = document.querySelector('#dialog p');
+    const time = document.querySelector('#dialog [data-time]');
+    const ticket = document.querySelector('#dialog [data-ticket]');
+    const location = document.querySelector('#dialog [data-location]');
+    // 有 class1 的 property 才需要
+    const category = document.querySelector('#dialog [data-category]');
+    imageWrapper.classList.remove('image-wrapper');
+    imageWrapper.classList.add('background-image');
+    imageWrapper.innerHTML = '';
+    if (PictureUrl1 !== undefined) {
+      imageWrapper.style.backgroundImage = `url(${PictureUrl1})`;
     }
-    function actBtnsClickHandler (event) {
-      console.log('我其實叫的到喔，因為我在 addEventToActivitiesBtns 的函式裡');
-      console.log(activitiesWithPic);
-      const index = event.target.dataset.actnum;
-      const selectedData = activitiesWithPic[index];
-      console.log(selectedData);
-      changeActDialogContent(selectedData);
-      openModal(modals[0]);
+    title.innerText = selectedData.Name || selectedData.ActivityName || selectedData.RestaurantName || selectedData.ScenicSpotName;
+    description.innerText = DescriptionDetail;
+    time.innerText = OpenTime;
+    if (TicketInfo !== undefined) {
+      ticket.innerText = TicketInfo;
+    } else {
+      ticket.closest('.item').style.display = 'none';
     }
-    function changeActDialogContent (selectedData) {
-      const imageWrapper = document.querySelector('#dialog [data-image-wrapper]');
-      const title = document.querySelector('#dialog h3');
-      const description = document.querySelector('#dialog p');
-      const time = document.querySelector('#dialog [data-time]');
-      const ticket = document.querySelector('#dialog [data-ticket]');
-      const location = document.querySelector('#dialog [data-location]');
-      const category = document.querySelector('#dialog [data-category]');
-      imageWrapper.innerHTML = `<img src="${selectedData.Picture.PictureUrl1}" alt="">`;
-      title.innerText = selectedData.Name;
-      description.innerText = selectedData.Description;
-      time.innerText = `${selectedData.StartTime.split('T')[0]}`;
-      ticket.innerText = selectedData.Charge || '免費';
-      location.innerText = selectedData.Location;
-      category.innerText = selectedData.Class1;
-    }
-    function changeAttDialogContent (selectedData) {
-      const { Address, DescriptionDetail, Name, OpenTime, TicketInfo, Class1 } = selectedData;
-      const { PictureUrl1 } = selectedData.Picture;
-      const imageWrapper = document.querySelector('#dialog [data-image-wrapper]');
-      const title = document.querySelector('#dialog h3');
-      const description = document.querySelector('#dialog p');
-      const time = document.querySelector('#dialog [data-time]');
-      const ticket = document.querySelector('#dialog [data-ticket]');
-      const location = document.querySelector('#dialog [data-location]');
-      // 有 class1 的 property 才需要
-      const category = document.querySelector('#dialog [data-category]');
-      imageWrapper.classList.remove('image-wrapper');
-      imageWrapper.classList.add('background-image');
-      imageWrapper.innerHTML = '';
-      if (PictureUrl1 !== undefined) {
-        imageWrapper.style.backgroundImage = `url(${PictureUrl1})`;
-      } 
-      title.innerText = Name;
-      description.innerText = DescriptionDetail;
-      time.innerText = OpenTime;
-      if (TicketInfo !== undefined) {
-        ticket.innerText = TicketInfo;
-      } else {
-        ticket.closest('.item').style.display = 'none';
-      }
-      if (Address !== undefined) {
-        location.innerText = Address;
-      } else {
-        location.closest('.item').style.display = 'none';
-      }
-      if (Class1 !== undefined) {
-        category.innerText = Class1;
-      } else {
-        category.closest('.item').style.display = 'none';
-      }
-    }
-    function changeFoodDialogContent (selectedData) {
-      const { Address, Class, Description, Name, OpenTime, Phone } = selectedData;
-      const { PictureUrl1 } = selectedData.Picture;
-      const imageWrapper = document.querySelector('#dialog [data-image-wrapper]');
-      const title = document.querySelector('#dialog h3');
-      const description = document.querySelector('#dialog p');
-      const time = document.querySelector('#dialog [data-time]');
-      const ticket = document.querySelector('#dialog [data-ticket]');
-      const location = document.querySelector('#dialog [data-location]');
-      // 有 class1 的 property 才需要
-      const category = document.querySelector('#dialog [data-category]');
-      imageWrapper.innerHTML = `<img src="${PictureUrl1}" alt="">`;
-      title.innerText = Name;
-      description.innerText = Description;
-      time.innerText = OpenTime;
+    if (Address !== undefined) {
       location.innerText = Address;
-      if (Class !== undefined) {
-        category.innerText = Class;
-      } else {
-        category.closest('.item').style.display = 'none';
-      }
-      if (Phone !== undefined) {
-        // 餐廳沒有 ticket 所以要改成電話
-        ticket.parentElement.innerHTML = `
+    } else {
+      location.closest('.item').style.display = 'none';
+    }
+    if (Class1 !== undefined) {
+      category.innerText = Class1;
+    } else {
+      category.closest('.item').style.display = 'none';
+    }
+  }
+  function changeFoodDialogContent (selectedData) {
+    const { Address, Class, Description, Name, OpenTime, Phone } = selectedData;
+    const { PictureUrl1 } = selectedData.Picture;
+    const imageWrapper = document.querySelector('#dialog [data-image-wrapper]');
+    const title = document.querySelector('#dialog h3');
+    const description = document.querySelector('#dialog p');
+    const time = document.querySelector('#dialog [data-time]');
+    const ticket = document.querySelector('#dialog [data-ticket]');
+    const location = document.querySelector('#dialog [data-location]');
+    // 有 class1 的 property 才需要
+    const category = document.querySelector('#dialog [data-category]');
+    imageWrapper.innerHTML = `<img src="${PictureUrl1}" alt="">`;
+    title.innerText = Name || selectedData.RestaurantName || selectedData.ScenicSpotName || selectedData.ActivityName;
+    description.innerText = Description;
+    time.innerText = OpenTime;
+    location.innerText = Address;
+    if (Class !== undefined) {
+      category.innerText = Class;
+    } else {
+      category.closest('.item').style.display = 'none';
+    }
+    if (Phone !== undefined) {
+      // 餐廳沒有 ticket 所以要改成電話
+      ticket.parentElement.innerHTML = `
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M2.68649 3.33726C2.68834 3.33726 2.642 3.38546 2.58361 3.44292C2.35933 3.66072 1.895 4.11393 1.89032 5.06207C1.88295 6.38834 2.75507 8.85089 6.95443 13.0494C11.1343 17.2274 13.5931 18.1098 14.9222 18.1098H14.9416C15.8898 18.1051 16.342 17.6399 16.5608 17.4165C16.6275 17.3479 16.6813 17.2979 16.7193 17.2664C17.6423 16.3377 18.115 15.6463 18.1104 15.2033C18.1039 14.751 17.5413 14.2162 16.7637 13.4766C16.5163 13.2412 16.2475 12.9854 15.9639 12.7018C15.2289 11.9687 14.8647 12.0938 14.064 12.3756C12.9564 12.7639 11.4365 13.2922 9.07496 10.9297C6.70975 8.56636 7.23896 7.04823 7.62636 5.94069C7.90626 5.13992 8.03416 4.77475 7.29827 4.03886C7.01004 3.75155 6.75146 3.47907 6.51327 3.22883C5.77831 2.45586 5.24818 1.89699 4.79868 1.8905H4.79126C4.34732 1.8905 3.65778 2.36503 2.68186 3.34097C2.68464 3.33819 2.68649 3.33726 2.68649 3.33726ZM14.9231 19.5C12.6135 19.5 9.60231 17.6612 5.97201 14.0327C2.32782 10.3894 0.486253 7.36891 0.500077 5.05465C0.508497 3.52541 1.31018 2.74225 1.6114 2.44845C1.62715 2.42898 1.68091 2.37615 1.69944 2.35762C3.02848 1.02764 3.9247 0.490085 4.81629 0.500138C5.85153 0.514183 6.58834 1.289 7.52071 2.2705C7.75148 2.51332 8.00172 2.77747 8.28069 3.05551C9.63382 4.40866 9.24827 5.5125 8.93872 6.39853C8.60136 7.3652 8.30942 8.19934 10.0574 9.94731C11.8072 11.6953 12.6413 11.4033 13.6043 11.0632C14.4912 10.7536 15.5923 10.3662 16.9472 11.7194C17.2216 11.9937 17.482 12.2412 17.7221 12.4701C18.7082 13.4071 19.4867 14.1476 19.4998 15.1857C19.5108 16.0708 18.9732 16.9726 17.6461 18.3007L17.0585 17.9022L17.5552 18.3878C17.2614 18.689 16.4792 19.4917 14.9491 19.5H14.9231Z" fill="#FF1D6C"/>
         </svg>
         <span>${Phone}</span>
         `;
-      } else {
-        ticket.closest('.item').style.display = 'none';
-      }
+    } else {
+      ticket.closest('.item').style.display = 'none';
     }
-    function changeHotelDialogContent (selectedData) {
-      const { Address, Class, Description, HotelName, Phone, ParkingInfo } = selectedData; 
-      const { PictureUrl1 } = selectedData.Picture;
+  }
+  function changeHotelDialogContent (selectedData) {
+    const { Address, Class, Description, HotelName, Phone, ParkingInfo } = selectedData;
+    const { PictureUrl1 } = selectedData.Picture;
 
-      const imageWrapper = document.querySelector('#dialog [data-image-wrapper]');
-      const title = document.querySelector('#dialog h3');
-      const description = document.querySelector('#dialog p');
-      const time = document.querySelector('#dialog [data-time]');
-      const ticket = document.querySelector('#dialog [data-ticket]');
-      const location = document.querySelector('#dialog [data-location]');
-      // 有 class1 的 property 才需要
-      const category = document.querySelector('#dialog [data-category]');
+    const imageWrapper = document.querySelector('#dialog [data-image-wrapper]');
+    const title = document.querySelector('#dialog h3');
+    const description = document.querySelector('#dialog p');
+    const time = document.querySelector('#dialog [data-time]');
+    const ticket = document.querySelector('#dialog [data-ticket]');
+    const location = document.querySelector('#dialog [data-location]');
+    // 有 class1 的 property 才需要
+    const category = document.querySelector('#dialog [data-category]');
 
-      if (PictureUrl1 !== undefined) { 
-        imageWrapper.innerHTML = `<img src="${PictureUrl1}" alt="">`;
-      } else {
-        imageWrapper.innerHTML = `<img src="../images/placeholder.svg" alt="">`;
-      }
+    if (PictureUrl1 !== undefined) {
+      imageWrapper.innerHTML = `<img src="${PictureUrl1}" alt="">`;
+    } else {
+      imageWrapper.innerHTML = `<img src="../images/placeholder.svg" alt="">`;
+    }
 
-      title.innerText = HotelName;
-      if (Description !== undefined) {
-        description.innerText = Description;
-      } else {
-        description.style.display = 'none';
-      }
-      // time 沒有
-      time.parentElement.innerHTML = `
+    title.innerText = HotelName;
+    if (Description !== undefined) {
+      description.innerText = Description;
+    } else {
+      description.style.display = 'none';
+    }
+    // time 沒有
+    time.parentElement.innerHTML = `
       <svg width="20" height="17" viewbox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 0L0 16.1905H20L10 0Z" fill="#FF1D6C"></path></svg>
       <span>${ParkingInfo}</span>
       `;
-      location.innerText = Address;
-      category.innerText = Class;
-      // Hotel 沒有 ticket 所以要改成電話
-      ticket.parentElement.innerHTML = `
+    location.innerText = Address;
+    category.innerText = Class;
+    // Hotel 沒有 ticket 所以要改成電話
+    ticket.parentElement.innerHTML = `
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" clip-rule="evenodd" d="M2.68649 3.33726C2.68834 3.33726 2.642 3.38546 2.58361 3.44292C2.35933 3.66072 1.895 4.11393 1.89032 5.06207C1.88295 6.38834 2.75507 8.85089 6.95443 13.0494C11.1343 17.2274 13.5931 18.1098 14.9222 18.1098H14.9416C15.8898 18.1051 16.342 17.6399 16.5608 17.4165C16.6275 17.3479 16.6813 17.2979 16.7193 17.2664C17.6423 16.3377 18.115 15.6463 18.1104 15.2033C18.1039 14.751 17.5413 14.2162 16.7637 13.4766C16.5163 13.2412 16.2475 12.9854 15.9639 12.7018C15.2289 11.9687 14.8647 12.0938 14.064 12.3756C12.9564 12.7639 11.4365 13.2922 9.07496 10.9297C6.70975 8.56636 7.23896 7.04823 7.62636 5.94069C7.90626 5.13992 8.03416 4.77475 7.29827 4.03886C7.01004 3.75155 6.75146 3.47907 6.51327 3.22883C5.77831 2.45586 5.24818 1.89699 4.79868 1.8905H4.79126C4.34732 1.8905 3.65778 2.36503 2.68186 3.34097C2.68464 3.33819 2.68649 3.33726 2.68649 3.33726ZM14.9231 19.5C12.6135 19.5 9.60231 17.6612 5.97201 14.0327C2.32782 10.3894 0.486253 7.36891 0.500077 5.05465C0.508497 3.52541 1.31018 2.74225 1.6114 2.44845C1.62715 2.42898 1.68091 2.37615 1.69944 2.35762C3.02848 1.02764 3.9247 0.490085 4.81629 0.500138C5.85153 0.514183 6.58834 1.289 7.52071 2.2705C7.75148 2.51332 8.00172 2.77747 8.28069 3.05551C9.63382 4.40866 9.24827 5.5125 8.93872 6.39853C8.60136 7.3652 8.30942 8.19934 10.0574 9.94731C11.8072 11.6953 12.6413 11.4033 13.6043 11.0632C14.4912 10.7536 15.5923 10.3662 16.9472 11.7194C17.2216 11.9937 17.482 12.2412 17.7221 12.4701C18.7082 13.4071 19.4867 14.1476 19.4998 15.1857C19.5108 16.0708 18.9732 16.9726 17.6461 18.3007L17.0585 17.9022L17.5552 18.3878C17.2614 18.689 16.4792 19.4917 14.9491 19.5H14.9231Z" fill="#FF1D6C"/>
       </svg>
       <span>${Phone}</span>
       `;
+  }
+  function addClickEventToUlEle (ulEle) {
+    ulEle.addEventListener('click', ulEleClickHandler);
+    console.log('ul 時間已經綁定');
+  }
+  function ulEleClickHandler (event) {
+    // 因為一開始 Modal 的內容格式是按照 Activities 的資料
+    // 但是 Food 跟 Attractions 的資料會有所不同
+    // 1. 判斷區塊
+    // 2. 依照區塊的分類來更新 Modal 裡面的資料
+    // 3. 開啟 Modal
+    // 4. 關閉 Modal 時把 Modal 回覆成最初的樣子（也就是符合 Activities 資料的形式）
+
+    // 點到 Attraction
+    // this === event.currentTarget === 設置 event 的 ele
+    if (this.dataset.list === 'attraction') {
+      // 確保點到 class content 也可以到祖先層
+      // => ele.closest() 會往父層找符合參數的 ele
+      const index = event.target.closest('[data-index]').dataset.index;
+      const selectedData = attractionsArr[index];
+      changeAttDialogContent(selectedData);
+      openModal(modals[0]);
     }
-    function addClickEventToUlEle (ulEle) {
-      ulEle.addEventListener('click', ulEleClickHandler);
-      console.log('ul 時間已經綁定');
+    // 點到 Food
+    if (this.dataset.list === 'food') {
+      const index = event.target.closest('[data-index]').dataset.index;
+      console.log(foodArr);
+      const selectedData = foodArr[index];
+      changeFoodDialogContent(selectedData);
+      openModal(modals[0]);
     }
-    function ulEleClickHandler(event) {
-      // 因為一開始 Modal 的內容格式是按照 Activities 的資料
-      // 但是 Food 跟 Attractions 的資料會有所不同
-      // 1. 判斷區塊
-      // 2. 依照區塊的分類來更新 Modal 裡面的資料
-      // 3. 開啟 Modal
-      // 4. 關閉 Modal 時把 Modal 回覆成最初的樣子（也就是符合 Activities 資料的形式）
-      
-      // 點到 Attraction
-      // this === event.currentTarget === 設置 event 的 ele
-      if (this.dataset.list === 'attraction') {
-        // 確保點到 class content 也可以到祖先層
-        // => ele.closest() 會往父層找符合參數的 ele
-        const index = event.target.closest('[data-index]').dataset.index;
-        const selectedData = attractionsArr[index];
-        changeAttDialogContent(selectedData);
-        openModal(modals[0]);
-      }
-      // 點到 Food
-      if (this.dataset.list === 'food') {
-        const index = event.target.closest('[data-index]').dataset.index;
-        const selectedData = foodArr[index];
-        changeFoodDialogContent(selectedData);
-        openModal(modals[0]);
-      }
-      // 點到 Hotels 
-      if (this.dataset.list === 'hotels') {
-        console.log('點到 hotels');
-        const index = event.target.closest('[data-index]').dataset.index;
-        const selectedData = hotelsArr[index];
-        changeHotelDialogContent(selectedData);
-        openModal(modals[0]);
-      }
+    // 點到 Hotels 
+    if (this.dataset.list === 'hotels') {
+      console.log('點到 hotels');
+      const index = event.target.closest('[data-index]').dataset.index;
+      const selectedData = hotelsArr[index];
+      changeHotelDialogContent(selectedData);
+      openModal(modals[0]);
     }
-    function openModal(modal) {
-      if (modal === null) {
-        return console.log('沒有東西，是 null');
-      }
-      modal.classList.add('is-active');
-      modal.parentElement.style.overflow = 'hidden';
+  }
+  function openModal (modal) {
+    if (modal === null) {
+      return console.log('沒有東西，是 null');
     }
-    function closeModal(modal) {
-      if (modal === null) {
-        return console.log('沒有東西，是 null');
-      }
-      modal.classList.remove('is-active');
-      modal.parentElement.removeAttribute('style');
-      modalHTMLInitialize();
+    modal.classList.add('is-active');
+    modal.parentElement.style.overflow = 'hidden';
+  }
+  function closeModal (modal) {
+    if (modal === null) {
+      return console.log('沒有東西，是 null');
     }
-    function addCloseModalEvent () {
-      modals.forEach(modal => {
-        modal.addEventListener('click', (event) => {
-          console.log(event.target);
-          if (event.target.nodeName === 'BUTTON') {
-            closeModal(modals[0]);
-          }
-        });
+    modal.classList.remove('is-active');
+    modal.parentElement.removeAttribute('style');
+    modalHTMLInitialize();
+  }
+  function addCloseModalEvent () {
+    modals.forEach(modal => {
+      modal.addEventListener('click', (event) => {
+        console.log(event.target);
+        if (event.target.nodeName === 'BUTTON') {
+          closeModal(modals[0]);
+        }
       });
-    }
-    function modalHTMLInitialize () {
-      modals[0].innerHTML = `
+    });
+  }
+  function modalHTMLInitialize () {
+    modals[0].innerHTML = `
       <div class="dialog" id="dialog">
         <div class="header">
           <button data-close-modal-buttons>&times;</button>
@@ -612,17 +613,17 @@ const Control = (() => {
                 </div>
               </div>
       `;
-    }
+  }
 
-    // https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$top=30&$format=JSON
+  // https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?$top=30&$format=JSON
   getRandomActivities(setApiUrl(baseUrl, 'Activity?', ['$format=JSON', '$top=30']));
   getFoodData(setApiUrl(baseUrl, 'Restaurant?', ['$format=JSON', '$top=10']));
   getAttractionsData(setApiUrl(baseUrl, 'ScenicSpot?', ['$format=JSON', '$top=10']));
   // 
-  
-  return { 
-    setApiUrl, 
-    renderActivies, 
+
+  return {
+    setApiUrl,
+    renderActivies,
     addEventToActivitiesBtns,
     renderAttractions,
     renderFood,
